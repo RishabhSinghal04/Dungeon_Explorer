@@ -1,6 +1,6 @@
-from interfaces import IOutputHandler
+from core.interfaces import IOutputHandler
 
 
 class ConsoleOutputHandler(IOutputHandler):
-    def display(self, text: str, end: str = "\n") -> None:
-        print(text, end=end)
+    def display(self, text: str, separator: str = "\n") -> None:
+        print(text, end=separator)

@@ -1,10 +1,13 @@
+from typing import Optional
+
 from characters import Player
-from emoji import EMOJIS
+from core.interfaces import IWeapon
+from ui.emoji import EMOJIS
 
 
 def build_player_status(player: Player) -> str:
-    weapon = player.get_equipped_weapon()
-    weapon_name = weapon.get_name() if weapon else "No"
+    weapon: Optional[IWeapon] = player.get_equipped_weapon()
+    weapon_name: str = weapon.name if weapon else "No"
     return (
         f"{player.name}: {EMOJIS.get("weapon", None)}  Weapon Equipped: {weapon_name}"
         f" | {EMOJIS.get("health", None)}  Health Points: {player.get_health_points()}"

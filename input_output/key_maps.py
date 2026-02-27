@@ -18,4 +18,4 @@ INVENTORY_KEY_MAP: dict[str, str] = {
 }
 
 # 0 : exit, 1 : attack, 2 : inventory
-COMMANDS = {"0": 0, "1": 1, "i": 2, "I": 2}
+# COMMANDS: dict[str, int] = {"0": 0, "1": 1, "i": 2, "I": 2}

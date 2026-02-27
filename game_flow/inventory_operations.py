@@ -1,20 +1,20 @@
-from input_output.display_output import ConsoleOutputHandler
-from characters import Player
-from item import Item, Weapon, HealingItem
+from core.interfaces import IItem, InventorySlot
+from characters.player import Player
+from items.item import Weapon
 from game_flow.game_context import GameContext
 
-from show_options import show_options
-from .player import build_player_status
-from key_maps import INVENTORY_KEY_MAP
+from ui.show_options import show_options
+from ui.build_player_status import build_player_status
+from input_output.key_maps import INVENTORY_KEY_MAP
 
 
 class InventoryOperations:
-    def __init__(self, context: GameContext):
-        self.context = context
+    def __init__(self, context: GameContext) -> None:
+        self.context: GameContext = context
 
     def inventory_operations(self) -> None:
         while True:
-            items = self.context.player.inventory.storage.list_items()
+            items: list[InventorySlot] = self.context.player.inventory.list_items()
             if not items:
                 self.context.output_handler.display("Inventory is empty")
                 return
@@ -25,63 +25,55 @@ class InventoryOperations:
             self.context.output_handler.display(self.format_inventory(items))
             show_options(INVENTORY_KEY_MAP, " " * len(INVENTORY_KEY_MAP))
 
-            action = self.context.input_handler.get_action(
+            action: str = self.context.input_handler.get_action(
                 "Select an option: ", INVENTORY_KEY_MAP
             )
-
             if action == "0":
                 return
 
-            item_map = {
-                str(display_index + 1): (slot_index, item)
-                for display_index, (slot_index, item, _) in enumerate(items)
-                if item is not None
-            }
-            selection = self.context.input_handler.get_action(
-                "Select an item: ", item_map
+            selection: int = self.context.input_handler.get_int(
+                "Select an item: ", 1, len(items)
             )
-            slot_index, selected_item = item_map[selection]
+            slot: InventorySlot = items[selection - 1]
+            slot_index, selected_item = slot.index, slot.item
 
             self.handle_inventory_action(action, selected_item, slot_index)
 
-    def format_inventory(
-        self, items: list[tuple[int, Item, int]], border_char="="
-    ) -> str:
+    def format_inventory(self, items: list[InventorySlot], border_char="=") -> str:
         text = " INVENTORY "
-
-        item_strings = [
-            f"{index + 1}. {item.get_name()} (x{quantity})"
-            for index, (slot_index, item, quantity) in enumerate(items)
+        item_strings: list[str] = [
+            f"{index + 1}. {slot.item.name} (x{slot.quantity})"
+            for index, slot in enumerate(items)
         ]
 
-        max_item_length = max((len(s) for s in item_strings), default=0)
-        padded_items = [s.ljust(max_item_length) for s in item_strings]
-        item_line = "  ".join(padded_items)
-        width = max(len(item_line), len(text))
+        max_item_length: int = max((len(s) for s in item_strings), default=0)
+        padded_items: list[str] = [s.ljust(max_item_length) for s in item_strings]
+        item_line: str = "  ".join(padded_items)
+        width: int = max(len(item_line), len(text))
 
         return f"{text:^{width}}\n{border_char * width}\n{item_line}\n{border_char * width}"
 
-    def handle_inventory_action(self, action: str, item: Item, index: int) -> None:
+    def handle_inventory_action(self, action: str, item: IItem, index: int) -> None:
         if action == "1":
-            result = self._equip_or_use_item(self.context.player, item, index)
+            result: bool = self._equip_or_use_item(self.context.player, item, index)
             if not result:
                 return
             if isinstance(item, Weapon):
-                self.context.output_handler.display(f"Equipped {item.get_name()}")
+                self.context.output_handler.display(f"Equipped {item.name}")
             else:
-                self.context.output_handler.display(f"Used {item.get_name()}")
+                self.context.output_handler.display(f"Used {item.name}")
         elif action == "2":
-            border = "*" * len(item.get_description())
+            border: str = "*" * len(item.description)
             self.context.output_handler.display(
-                border + "\n" + item.get_description() + "\n" + border
+                border + "\n" + item.description + "\n" + border
             )
         elif action == "3":
-            choice = self._confirm_choice()
+            choice: str = self._confirm_choice()
             if choice == "0":
                 return
-            discarded = self._discard_item(index, self.context.player)
+            discarded: bool = self._discard_item(index, self.context.player)
             if discarded:
-                self.context.output_handler.display(f"Discarded {item.get_name()}")
+                self.context.output_handler.display(f"Discarded {item.name}")
 
     def _confirm_choice(self) -> str:
         options: dict[str, str] = {"1": "Yes", "0": "No"}
@@ -94,19 +86,10 @@ class InventoryOperations:
             return False
 
         if item == player.get_equipped_weapon():
-            player.combat_manager.equipped_weapon = None
+            player.unequip_weapon()
         return True
 
-        # item_name = item.get_name()
-        # if item == player.get_equipped_weapon():
-        #     player.combat_manager.equipped_weapon = None
-
-        # item_name = player.inventory.storage.remove_item(index)
-        # if item_name:
-        #     output_handler.display(f"{item_name} discarded from inventory.")
-
-    def _equip_or_use_item(self, player: Player, item: Item, index: int) -> bool:
+    def _equip_or_use_item(self, player: Player, item: IItem, index: int) -> bool:
         if isinstance(item, Weapon):
-            return player.equip_weapon(item.get_name())
-        elif isinstance(item, HealingItem):
-            return player.use_healing_item(index)
+            return player.equip_weapon(item.name)
+        return player.use_healing_item(index)

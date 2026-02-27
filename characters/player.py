@@ -1,42 +1,37 @@
 from typing import Optional
-from interfaces import IItem, IPlayer, IWeapon, IInventory, ICash
-from characters.managers import CombatManager, CashManager
+from core.interfaces import (
+    ICharacter,
+    IPlayer,
+    IWeapon,
+    IInventory,
+    ICash,
+    ICombatManager,
+)
 from characters.character import Character
-
-
-# from item import Item
+from characters.managers.combat_manager import CombatManager
 
 
 class Player(Character, IPlayer):
-    DEFAULT_HEALTH_POINTS = 100
-    MAX_HEALTH_POINTS = 100
 
     def __init__(
         self,
         name: str,
         inventory: IInventory,
-        starting_cash: float = 0.0,
-        starting_items: dict[IItem, int] = None,
-    ):
-        super().__init__(self.DEFAULT_HEALTH_POINTS)
-        self._name = name
-        self._inventory = inventory
-        self._cash_manager = CashManager(starting_cash)
-        self.combat_manager = CombatManager(self, inventory)
+        cash: ICash,
+        config: dict[str, int],
+    ) -> None:
+        super().__init__(config["default_health_points"])
+        self._name: str = name
+        self._inventory: IInventory = inventory
+        self._cash: ICash = cash
+        self._max_health_points: int = config["max_health_points"]
 
-        if starting_items:
-            for item, quantity in starting_items.items():
-                self.inventory.storage.add_item(item, quantity)
-                if (
-                    isinstance(item, IWeapon)
-                    and not self.combat_manager.equipped_weapon
-                ):
-                    self.equip_weapon(item.get_name())
-
-        # for item in starting_items.keys():
-        #     if isinstance(item, IWeapon):
-        #         self.equip_weapon(item.get_name())
-        #         break
+        self._combat_manager: ICombatManager = CombatManager(
+            inventory=self._inventory,
+            get_health_points=self.get_health_points,
+            max_health_points=self.max_health_points,
+            update_health_points=self.update_health_points,
+        )
 
     @property
     def inventory(self) -> IInventory:
@@ -49,60 +44,40 @@ class Player(Character, IPlayer):
 
     @property
     def max_health_points(self) -> int:
-        return self.MAX_HEALTH_POINTS
+        return self._max_health_points
 
     @property
     def cash(self) -> ICash:
-        return self._cash_manager
+        return self._cash
 
     def get_health_points(self) -> int:
         return self.health_points
 
-    # def get_cash(self) -> float:
-    #     return self.cash.get_balance()
-
     def get_equipped_weapon(self) -> Optional[IWeapon]:
         """Return the currently equipped weapon, or None if no weapon is equipped."""
-        return self.combat_manager.equipped_weapon
+        return self._combat_manager.equipped_weapon
 
-    # ___combat___
-    def attack(self, target: Character) -> bool:
+    def attack(self, target: ICharacter) -> bool:
         """Perform an attack on the target using the equipped weapon. Returns success/failure."""
-        return self.combat_manager.attack_performed(target)
+        return self._combat_manager.attack_performed(target)
 
     def equip_weapon(self, weapon_name: str) -> bool:
         """Equip a weapon from the inventory by name. Returns success/failure."""
-        return self.combat_manager.equip_weapon(weapon_name)
+        return self._combat_manager.equip_weapon(weapon_name)
+
+    def unequip_weapon(self) -> None:
+        """Unequip the currently equipped weapon."""
+        self._combat_manager.equipped_weapon = None
 
     def use_healing_item(self, index: int) -> bool:
         """Use a healing item to restore health if available. Returns success/failure."""
-        return self.combat_manager.healing_item_used(index)
+        return self._combat_manager.healing_item_used(index)
 
     def update_health_points(self, amount: int) -> None:
         """Update health points by a given amount, clamped between 0 and max health."""
         self.health_points = max(
-            0, min(self.MAX_HEALTH_POINTS, self.health_points + amount)
+            0, min(self._max_health_points, self.health_points + amount)
         )
 
-    # ___economy___
-    # def add_cash(self, amount: float) -> None:
-    #     self.cash.add_cash(amount)
-
-    # def reduce_cash(self, amount: float) -> None:
-    #     self.cash.reduce_cash(amount)
-
     def __str__(self) -> str:
-        return f"Player(name={self._name}, HP={self.health_points}, cash={self.get_cash()})"
-
-
-# ___inventory/equipment___
-# def select_weapon(self, weapon_name: str, inventory: Inventory) -> None:
-# equipped = self.inventory.equip_weapon(weapon_name)
-# if equipped:
-#     for slot in self.inventory.slots:
-#         if slot.item and slot.item.name.lower() == weapon_name.lower():
-#             self.weapon_equipped = slot.item  # assign to weapon_equipped
-#             print(f"{self.name} equipped {weapon_name}")
-#             return True
-# print("Weapon not found in inventory")
-# return False
+        return f"Player (name={self._name},  HP={self.health_points}, cash={self.cash.get_balance()})"

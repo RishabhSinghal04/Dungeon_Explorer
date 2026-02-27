@@ -1,7 +1,7 @@
 import sys
-from typing import Callable, Optional
+from typing import Callable, Optional, TypeVar
 
-from interfaces import IOutputHandler
+from core.interfaces import IOutputHandler
 from input_output.display_output import ConsoleOutputHandler
 
 try:
@@ -9,15 +9,19 @@ try:
 except ImportError:
     winsound = None
 
+T = TypeVar("T")
+
 
 class UserInputHandler:
     def __init__(
         self,
         input_func: Callable[[str], str] = input,
         output_handler: Optional[IOutputHandler] = None,
-    ):
-        self.input_func = input_func
-        self.output_handler = output_handler or ConsoleOutputHandler()
+    ) -> None:
+        self.input_func: Callable[[str], str] = input_func
+        self.output_handler: IOutputHandler | ConsoleOutputHandler = (
+            output_handler or ConsoleOutputHandler()
+        )
 
     def get_action(self, prompt: str, key_map: dict[str, str]) -> str:
         """
@@ -30,7 +34,7 @@ class UserInputHandler:
         Returns:
             str: The valid key chosen by the user (normalized to lowercase).
         """
-        valid_keys = list(key_map.keys())
+        valid_keys: list[str] = list(key_map.keys())
         return self._get_validated_input(
             prompt,
             lambda v: v.lower() if v and v.lower() in valid_keys else None,
@@ -41,7 +45,6 @@ class UserInputHandler:
         self, prompt: str, min_value: int = 1, max_value: Optional[int] = None
     ) -> int:
         """
-        if max_value is
         Prompt the user until they enter a valid integer within the given range.
 
         Args:
@@ -62,11 +65,16 @@ class UserInputHandler:
         return self._get_validated_input(
             prompt,
             lambda v: (
-                v
+                int(v)
                 if v.isdigit() and min_value <= int(v) <= (max_value or int(v))
                 else None
             ),
-            f"Invalid Input! Please enter a number in range {min_value}-{max_value if max_value else {"\u221E"}}.",
+            f"Invalid Input! Please enter "
+            + (
+                f"a number in range {min_value}-{max_value}."
+                if max_value
+                else f"{min_value}."
+            ),
         )
 
     def get_string(self, prompt: str, num_of_chars: int = 12) -> str:
@@ -91,10 +99,10 @@ class UserInputHandler:
     def _get_validated_input(
         self,
         prompt: str,
-        validator: Callable[[str], Optional[str]],
+        validator: Callable[[str], Optional[T]],
         error_message: str,
         use_strip: bool = False,
-    ) -> str:
+    ) -> T:
         """
         Internal helper: repeatedly prompt until validator returns a non-None value.
         If use_strip=True, input is trimmed before validation.
@@ -104,8 +112,8 @@ class UserInputHandler:
         while True:
             raw_value = self.input_func(prompt)
             if use_strip:
-                raw_value = raw_value.strip()
-            result = validator(raw_value)
+                raw_value: str = raw_value.strip()
+            result: Optional[T] = validator(raw_value)
             if result is not None:
                 return result
             self._beep()

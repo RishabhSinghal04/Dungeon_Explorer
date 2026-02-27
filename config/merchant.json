@@ -1,0 +1,6 @@
+{
+    "weapon_stock_quantity": 1,
+    "healing_item_stock_quantity": 6,
+    "max_healing_items_per_player": 6,
+    "column_spacing": 5
+}

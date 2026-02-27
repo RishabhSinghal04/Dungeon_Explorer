@@ -1,56 +1,60 @@
 from typing import Optional
 
+from characters.enemy import Enemy
+from config.game_config import EnemyType, Difficulty
 from game_flow.vault_encounter import VaultEncounter
 from game_flow.game_context import GameContext
 from game_flow.inventory_operations import InventoryOperations
 from game_flow.encounter_result import EncounterResult
 from game_flow.combat import Combat
 from game_flow.merchant_interaction import MerchantInteraction
+from characters.factories.enemy_factory import EnemyFactory
 
-from characters.enemy import create_enemy
-from key_maps import build_main_key_map
-from game_flow.player.build_player_status import build_player_status
+from input_output.key_maps import build_main_key_map
+from ui.build_player_status import build_player_status
 
 
 class LevelRunner:
     def __init__(
         self,
         level_num: int,
-        difficulty: str,
+        difficulty: Difficulty,
         vaults: dict[int, VaultEncounter],
         context: GameContext,
-    ):
-        self.level_num = level_num
-        self.difficulty = difficulty
-        self.vaults = vaults
-        self.context = context
+        enemy_factory: EnemyFactory,
+    ) -> None:
+        self._level_num: int = level_num
+        self._difficulty: Difficulty = difficulty
+        self._vaults: dict[int, VaultEncounter] = vaults
+        self._context: GameContext = context
+        self._enemy_factory: EnemyFactory = enemy_factory
 
     def run(self, input_chars: list[str]) -> int:
         self._display_level_intro()
-        result = self._run_vaults_loop(input_chars)
-        self.context.output_handler.display(build_player_status(self.context.player))
+        result: int = self._run_vaults_loop(input_chars)
+        self._context.output_handler.display(build_player_status(self._context.player))
         if result <= 0:
             return 0
         return self._after_vaults()
 
     def _display_level_intro(self) -> None:
-        self.context.output_handler.display(f"\nLevel {self.level_num}:-")
+        self._context.output_handler.display(f"\nLevel {self._level_num}:-")
 
     def _run_vaults_loop(self, input_chars: list[str]) -> int:
-        total_vaults = len(self.vaults)
+        total_vaults: int = len(self._vaults)
         cleared_vaults: set[int] = set()
-        MAIN_KEY_MAP = build_main_key_map(total_vaults)
+        MAIN_KEY_MAP: dict[str, str] = build_main_key_map(total_vaults)
 
         while len(cleared_vaults) < total_vaults:
-            self.context.output_handler.display(
-                "\n" + build_player_status(self.context.player)
+            self._context.output_handler.display(
+                "\n" + build_player_status(self._context.player)
             )
-            choice = self.context.input_handler.get_action(
+            choice: str = self._context.input_handler.get_action(
                 f"\nVaults: {self._show_vaults_status(cleared_vaults)}    i. Inventory    0. Exit Game : ",
                 MAIN_KEY_MAP,
             )
-            self.context.output_handler.display("")
-            result = self._handle_choice(
+            self._context.output_handler.display("")
+            result: Optional[int] = self._handle_choice(
                 choice, input_chars, cleared_vaults, MAIN_KEY_MAP
             )
             if result is not None:
@@ -58,8 +62,8 @@ class LevelRunner:
         return 1
 
     def _show_vaults_status(self, cleared_vaults: set[int]) -> str:
-        remaining_valuts = [
-            str(vault) for vault in self.vaults.keys() if vault not in cleared_vaults
+        remaining_valuts: list[str] = [
+            str(vault) for vault in self._vaults.keys() if vault not in cleared_vaults
         ]
         return ", ".join(remaining_valuts) if remaining_valuts else "None"
 
@@ -73,12 +77,12 @@ class LevelRunner:
         if choice == "0":
             return 0
         elif choice in input_chars:
-            InventoryOperations(self.context).inventory_operations()
+            InventoryOperations(self._context).inventory_operations()
         else:
-            result = self._handle_vault_choice(int(choice))
+            result: EncounterResult = self._handle_vault_choice(int(choice))
             if result <= 0:
-                self.context.output_handler.display(
-                    build_player_status(self.context.player)
+                self._context.output_handler.display(
+                    build_player_status(self._context.player)
                 )
                 return 0
             cleared_vaults.add(int(choice))
@@ -86,13 +90,16 @@ class LevelRunner:
         return None
 
     def _handle_vault_choice(self, vault_index: int) -> EncounterResult:
-        self.context.output_handler.display(f"-> In vault {vault_index}:-")
-        self.context.output_handler.display(build_player_status(self.context.player))
-        self.context.output_handler.display("")
-        return self.vaults[vault_index].resolve()
+        self._context.output_handler.display(f"-> In vault {vault_index}:-")
+        self._context.output_handler.display(build_player_status(self._context.player))
+        self._context.output_handler.display("")
+        return self._vaults[vault_index].resolve()
 
-    def _after_vaults(self):
-        MerchantInteraction(self.context).interact()
-        result = Combat(create_enemy("boss", self.difficulty), self.context).start()
-        self.context.output_handler.display(build_player_status(self.context.player))
+    def _after_vaults(self) -> EncounterResult:
+        MerchantInteraction(self._context).interact()
+
+        boss: Enemy = self._enemy_factory.create(EnemyType.BOSS, self._difficulty)
+        result: EncounterResult = Combat(boss, self._context).start()
+        
+        self._context.output_handler.display(build_player_status(self._context.player))
         return result

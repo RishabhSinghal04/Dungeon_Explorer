@@ -1,10 +1,13 @@
-from menu import GameMenu
+from input_output import UserInputHandler, ConsoleOutputHandler
+from ui.menu import GameMenu
 
 
 def main() -> None:
-    print("Dungeon Explorer")
-    game_menu = GameMenu()
-    game_menu.main_menu()
+    input_handler = UserInputHandler()
+    output_handler = ConsoleOutputHandler()
+    output_handler.display("Dungeon Explorer")
+    menu = GameMenu(input_handler, output_handler)
+    menu.main_menu()
 
 
 if __name__ == "__main__":

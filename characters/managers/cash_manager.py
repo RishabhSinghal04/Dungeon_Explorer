@@ -1,9 +1,9 @@
-from interfaces import ICash
+from core.interfaces import ICash
 
 
 class CashManager(ICash):
-    def __init__(self, starting_cash: float = 0.0):
-        self.cash = starting_cash
+    def __init__(self, starting_cash: float = 0.0) -> None:
+        self.cash: float = starting_cash
 
     def add_cash(self, amount: float) -> None:
         self.cash += amount

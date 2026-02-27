@@ -1,59 +1,90 @@
-from typing import Union
+from abc import ABC, abstractmethod
 
 from characters.enemy import Enemy
 from .encounter_result import EncounterResult
-from item import HealingItem
+from items.item import HealingItem
 from game_flow.game_context import GameContext
 from game_flow.combat import Combat
 from game_flow.inventory_operations import InventoryOperations
 
-from show_options import show_options
+from ui.show_options import show_options
+from ui.emoji import EMOJIS
 
 
-class VaultEncounter:
-    def __init__(self, content: Union[Enemy, HealingItem, int], context: GameContext):
-        self.content = content
-        self.context = context
+class VaultContent(ABC):
+    """Base class for vault contents."""
 
-    def resolve(self) -> EncounterResult:
-        """Resolve the vault encounter:
-        - HealingItem : player can take or leave, returns SUCCESS.
-        - Cash (int) : player gains cash, returns SUCCESS.
-        - Enemy : triggers combat, returns the result of combat.
-        """
-        if isinstance(self.content, HealingItem):
-            self._found_item()
-            return EncounterResult.SUCCESS
-        elif isinstance(self.content, int):
-            self._found_cash()
-            return EncounterResult.SUCCESS
-        else:
-            return Combat(self.content, self.context).start()
+    @abstractmethod
+    def resolve(self, context: GameContext) -> EncounterResult:
+        """Resolve the encounter."""
+        pass
 
-    def _found_item(self) -> None:
-        self.context.output_handler.display(f"You found a {self.content.get_name()}.")
-        options = {"1": "take", "0": "leave"}
+
+class ItemContent(VaultContent):
+    """Vault containing a healing item."""
+
+    def __init__(self, item: HealingItem) -> None:
+        self.item: HealingItem = item
+
+    def resolve(self, context: GameContext) -> EncounterResult:
+        """Handle finding a healing item."""
+        context.output_handler.display(
+            f"{EMOJIS.get("herb", None)}  You found a {self.item.name}."
+        )
+        options: dict[str, str] = {"1": "take", "0": "leave"}
 
         while True:
             show_options(options, " " * len(options))
-            choice = self.context.input_handler.get_action(
+            choice: str = context.input_handler.get_action(
                 "Select an option: ", options
             )
             if choice == "0":
-                self.context.output_handler.display("You left the item.")
+                context.output_handler.display("You left the item.")
                 break
-            if not self.context.player.inventory.storage.is_full():
-                self._add_item()
+            if not context.player.inventory.storage.is_full():
+                self._add_item(context)
                 break
-            self.context.output_handler.display("Inventory is full.")
-            InventoryOperations(self.context).inventory_operations()
 
-    def _found_cash(self) -> None:
-        self.context.output_handler.display(f"You found {self.content}.")
-        self.context.player.cash.add_cash(self.content)
+            context.output_handler.display("Inventory is full.")
+            InventoryOperations(context).inventory_operations()
 
-    def _add_item(self) -> None:
-        self.context.player.inventory.storage.add_item(self.content)
-        self.context.output_handler.display(
-            f"{self.content.get_name()} added to inventory."
+        return EncounterResult.SUCCESS
+
+    def _add_item(self, context: GameContext) -> None:
+        context.player.inventory.storage.add_item(self.item)
+        context.output_handler.display(f"{self.item.name} added to inventory.")
+
+
+class CashContent(VaultContent):
+    """Vault containing cash."""
+
+    def __init__(self, amount: float) -> None:
+        self.amount: float = amount
+
+    def resolve(self, context: GameContext) -> EncounterResult:
+        """Handle finding cash."""
+        context.output_handler.display(
+            f"{EMOJIS.get("coin", None)}  You found {self.amount}."
         )
+        context.player.cash.add_cash(self.amount)
+        return EncounterResult.SUCCESS
+
+
+class EnemyContent(VaultContent):
+    """Vault containing an enemy."""
+
+    def __init__(self, enemy: Enemy) -> None:
+        self.enemy: Enemy = enemy
+
+    def resolve(self, context: GameContext) -> EncounterResult:
+        return Combat(self.enemy, context).start()
+
+
+class VaultEncounter:
+    def __init__(self, content: VaultContent, context: GameContext) -> None:
+        self.content: VaultContent = content
+        self.context: GameContext = context
+
+    def resolve(self) -> EncounterResult:
+        """Resolve the vault encounter."""
+        return self.content.resolve(self.context)

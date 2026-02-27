@@ -1,67 +1,96 @@
-import random
+from typing import Optional
 
-from .player import PlayerFactory
+from core.interfaces import IOutputHandler
+from characters.enemy import Enemy, EnemyStats
+from characters.factories.enemy_factory import EnemyFactory
+from characters.player import Player
+from characters.factories.player_factory import PlayerFactory
 from game_flow.vault_encounter import VaultEncounter
 from game_flow.game_context import GameContext
-from input_output.user_input import UserInputHandler
-from input_output.display_output import ConsoleOutputHandler
 from game_flow.combat import Combat
 from game_flow.level_runner import LevelRunner
+from game_flow.vault_assigner import VaultAssigner
+from input_output.user_input import UserInputHandler
+from config.game_config import (
+    Difficulty,
+    GameConfig,
+    EnemyType,
+    LevelConfig,
+    load_game_config,
+)
 
-from .player import build_player_status
-from characters.enemy import create_enemy
+from loaders.enemy_config import load_enemy_config
+from ui.build_player_status import build_player_status
 
 
 class Game:
-    def __init__(self, player_name: str, difficulty: str = "medium"):
-        self.input_handler = UserInputHandler()
-        self.output_handler = ConsoleOutputHandler()
-        self.player = PlayerFactory.create_player(player_name)
-        self.context = GameContext(self.player, self.input_handler, self.output_handler)
-        self.difficulty = difficulty
+    def __init__(
+        self,
+        player_name: str,
+        difficulty: Difficulty,
+        output_handler: IOutputHandler,
+        input_handler: Optional[UserInputHandler] = None,
+        game_config: Optional[GameConfig] = None,
+    ) -> None:
+        self.player: Player = PlayerFactory.create_player(player_name)
+        self._difficulty: Difficulty = difficulty
+
+        self.input_handler: UserInputHandler = input_handler or UserInputHandler()
+        self.output_handler: IOutputHandler = output_handler
+
+        self._enemy_config: dict[str, dict[str, EnemyStats]] = load_enemy_config()
+        self._game_config: GameConfig = game_config or load_game_config()
+        self._level_config = LevelConfig()
+
+        self._enemy_factory = EnemyFactory(self._enemy_config)
+
+        self._context = GameContext(
+            self.player, self.input_handler, self.output_handler
+        )
 
     def start(self) -> None:
-        input_chars: list[str] = ["i", "I"]
-        context = GameContext(self.player, self.input_handler, self.output_handler)
-
+        """Start and run the game."""
         self.output_handler.display(
-            f"{self.player.name} selected {self.difficulty.capitalize()} difficulty"
+            f"{self.player.name} selected {self._difficulty.value.capitalize()} difficulty"
         )
-        levels = {
-            index: VaultAssigner(self.difficulty, self.context).assign_vaults
-            for index in range(1, 5)
-        }
 
-        for level_num, vaults_func in levels.items():
-            runner = LevelRunner(level_num, self.difficulty, vaults_func(), context)
-            result = runner.run(input_chars)
-            if result <= 0:
-                return
+        if not self._run_levels():
+            return
 
-        Combat(create_enemy("final_boss", self.difficulty), context).start()
+        self._run_final_boss()
+        self._display_final_status()
+
+    def _run_levels(self) -> bool:
+        """Run all game levels. Returns True if player survived."""
+        for level_num in range(1, self._game_config.total_levels + 1):
+            if not self._run_single_level(level_num):
+                return False
+        return True
+
+    def _run_single_level(self, level_num) -> bool:
+        """Run a single level."""
+        vaults: dict[int, VaultEncounter] = self._create_vaults_for_level()
+        runner = LevelRunner(
+            level_num, self._difficulty, vaults, self._context, self._enemy_factory
+        )
+
+        result: int = runner.run(self._game_config.inventory_interaction_keys)
+        return result > 0
+
+    def _create_vaults_for_level(self) -> dict[int, VaultEncounter]:
+        """Create vaults for a level."""
+        assigner = VaultAssigner(
+            self._difficulty, self._enemy_config, self._context, self._level_config
+        )
+        return assigner.assign_vaults()
+
+    def _run_final_boss(self) -> None:
+        """Run the final boss encounter."""
+        final_boss: Enemy = self._enemy_factory.create(
+            EnemyType.FINAL_BOSS, self._difficulty
+        )
+        Combat(final_boss, self._context).start()
+
+    def _display_final_status(self) -> None:
+        """Display final game status."""
         self.output_handler.display(build_player_status(self.player))
-
-
-class VaultAssigner:
-    def __init__(self, difficulty: str, context: GameContext):
-        self.difficulty = difficulty
-        self.context = context
-
-    def assign_vaults(self) -> dict[int, VaultEncounter]:
-        healing_item = PlayerFactory.get_one_healing_item()
-        CASH = 1000
-
-        encounters = (
-            [create_enemy("regular", self.difficulty) for _ in range(4)]
-            + [healing_item for _ in range(2)]
-            + [CASH] * 2
-            + [create_enemy("mini_boss", self.difficulty)]
-        )
-
-        random.shuffle(encounters)
-        # context = GameContext(self.player, self.input_handler, self.output_handler)
-
-        return {
-            index + 1: VaultEncounter(encounters[index], self.context)
-            for index in range(len(encounters))
-        }

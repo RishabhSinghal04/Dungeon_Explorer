@@ -1,0 +1,50 @@
+{
+    "regular": {
+        "medium": {
+            "health_points": 80,
+            "attack_points": 10,
+            "cash_drop": 400.0
+        },
+        "hard": {
+            "health_points": 90,
+            "attack_points": 10,
+            "cash_drop": 400.0
+        }
+    },
+    "mini_boss": {
+        "medium": {
+            "health_points": 120,
+            "attack_points": 20,
+            "cash_drop": 800.0
+        },
+        "hard": {
+            "health_points": 130,
+            "attack_points": 20,
+            "cash_drop": 800.0
+        }
+    },
+    "boss": {
+        "medium": {
+            "health_points": 180,
+            "attack_points": 30,
+            "cash_drop": 1200.0
+        },
+        "hard": {
+            "health_points": 190,
+            "attack_points": 30,
+            "cash_drop": 1200.0
+        }
+    },
+    "final_boss": {
+        "medium": {
+            "health_points": 230,
+            "attack_points": 40,
+            "cash_drop": 800.0
+        },
+        "hard": {
+            "health_points": 240,
+            "attack_points": 40,
+            "cash_drop": 2000.0
+        }
+    }
+}
