@@ -8,7 +8,7 @@ from game_flow.combat import Combat
 from game_flow.inventory_operations import InventoryOperations
 
 from ui.show_options import show_options
-from ui.emoji import EMOJIS
+from ui.emoji import get_emoji
 
 
 class VaultContent(ABC):
@@ -29,7 +29,7 @@ class ItemContent(VaultContent):
     def resolve(self, context: GameContext) -> EncounterResult:
         """Handle finding a healing item."""
         context.output_handler.display(
-            f"{EMOJIS.get("herb", None)}  You found a {self.item.name}."
+            f"{get_emoji("herb")}  You found a {self.item.name}."
         )
         options: dict[str, str] = {"1": "take", "0": "leave"}
 
@@ -52,7 +52,9 @@ class ItemContent(VaultContent):
 
     def _add_item(self, context: GameContext) -> None:
         context.player.inventory.storage.add_item(self.item)
-        context.output_handler.display(f"{self.item.name} added to inventory.")
+        context.output_handler.display(
+            f"{get_emoji("herb")}  {self.item.name} added to inventory."
+        )
 
 
 class CashContent(VaultContent):
@@ -63,9 +65,7 @@ class CashContent(VaultContent):
 
     def resolve(self, context: GameContext) -> EncounterResult:
         """Handle finding cash."""
-        context.output_handler.display(
-            f"{EMOJIS.get("coin", None)}  You found {self.amount}."
-        )
+        context.output_handler.display(f"{get_emoji("coin")}  You found {self.amount}.")
         context.player.cash.add_cash(self.amount)
         return EncounterResult.SUCCESS
 
