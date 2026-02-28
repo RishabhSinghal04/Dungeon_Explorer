@@ -1,3 +1,6 @@
+from enum import Enum
+
+
 def build_main_key_map(total_crypts: int) -> dict[str, str]:
     key_map: dict[str, str] = {
         str(vault_num): f"crypt_{vault_num}" for vault_num in range(1, total_crypts + 1)
@@ -8,14 +11,30 @@ def build_main_key_map(total_crypts: int) -> dict[str, str]:
     return key_map
 
 
-COMBAT_KEY_MAP: dict[str, str] = {"1": "attack", "i": "inventory", "0": "exit_game"}
+class CombatAction(Enum):
+    ATTACK = "1"
+    INVENTORY = "i"
+    EXIT = "0"
 
-INVENTORY_KEY_MAP: dict[str, str] = {
-    "1": "equip_or_use",
-    "2": "view_description",
-    "3": "discard_item",
-    "0": "exit_inventory",
+
+class InventoryAction(Enum):
+    EQUIP_OR_USE = "1"
+    COMBINE = "2"
+    VIEW_DESCRIPTION = "3"
+    DISCARD_ITEM = "4"
+    EXIT = "0"
+
+
+COMBAT_KEY_MAP: dict[str, str] = {
+    CombatAction.ATTACK.value: "attack",
+    CombatAction.INVENTORY.value: "inventory",
+    CombatAction.EXIT.value: "exit_game",
 }
 
-# 0 : exit, 1 : attack, 2 : inventory
-# COMMANDS: dict[str, int] = {"0": 0, "1": 1, "i": 2, "I": 2}
+INVENTORY_KEY_MAP: dict[str, str] = {
+    InventoryAction.EQUIP_OR_USE.value: "equip_or_use",
+    InventoryAction.COMBINE.value: "combine",
+    InventoryAction.VIEW_DESCRIPTION.value: "view_description",
+    InventoryAction.DISCARD_ITEM.value: "discard_item",
+    InventoryAction.EXIT.value: "exit_inventory",
+}
