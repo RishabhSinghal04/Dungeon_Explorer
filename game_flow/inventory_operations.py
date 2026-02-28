@@ -5,6 +5,7 @@ from game_flow.game_context import GameContext
 
 from ui.show_options import show_options
 from ui.build_player_status import build_player_status
+from ui.emoji import get_emoji
 from input_output.key_maps import INVENTORY_KEY_MAP
 
 
@@ -59,9 +60,13 @@ class InventoryOperations:
             if not result:
                 return
             if isinstance(item, Weapon):
-                self.context.output_handler.display(f"Equipped {item.name}")
+                self.context.output_handler.display(
+                    f"{get_emoji("weapon")}  Equipped {item.name}"
+                )
             else:
-                self.context.output_handler.display(f"Used {item.name}")
+                self.context.output_handler.display(
+                    f"{get_emoji("herb")}  Used {item.name}"
+                )
         elif action == "2":
             border: str = "*" * len(item.description)
             self.context.output_handler.display(
