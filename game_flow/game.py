@@ -1,16 +1,19 @@
 from typing import Optional
 
-from core.interfaces import IOutputHandler
-from characters.enemy import Enemy, EnemyStats
+from core.interfaces import IOutputHandler, IPlayer, IEnemy
+
+from characters.enemy import EnemyStats
 from characters.factories.enemy_factory import EnemyFactory
-from characters.player import Player
 from characters.factories.player_factory import PlayerFactory
+
 from game_flow.vault_encounter import VaultEncounter
 from game_flow.game_context import GameContext
 from game_flow.combat import Combat
 from game_flow.level_runner import LevelRunner
 from game_flow.vault_assigner import VaultAssigner
+
 from input_output.user_input import UserInputHandler
+
 from config.game_config import (
     Difficulty,
     GameConfig,
@@ -32,7 +35,7 @@ class Game:
         input_handler: Optional[UserInputHandler] = None,
         game_config: Optional[GameConfig] = None,
     ) -> None:
-        self.player: Player = PlayerFactory.create_player(player_name)
+        self._player: IPlayer = PlayerFactory.create_player(player_name)
         self._difficulty: Difficulty = difficulty
 
         self.input_handler: UserInputHandler = input_handler or UserInputHandler()
@@ -45,8 +48,12 @@ class Game:
         self._enemy_factory = EnemyFactory(self._enemy_config)
 
         self._context = GameContext(
-            self.player, self.input_handler, self.output_handler
+            self._player, self.input_handler, self.output_handler
         )
+
+    @property
+    def player(self) -> IPlayer:
+        return self._player
 
     def start(self) -> None:
         """Start and run the game."""
@@ -67,7 +74,7 @@ class Game:
                 return False
         return True
 
-    def _run_single_level(self, level_num) -> bool:
+    def _run_single_level(self, level_num: int) -> bool:
         """Run a single level."""
         vaults: dict[int, VaultEncounter] = self._create_vaults_for_level()
         runner = LevelRunner(
@@ -86,11 +93,11 @@ class Game:
 
     def _run_final_boss(self) -> None:
         """Run the final boss encounter."""
-        final_boss: Enemy = self._enemy_factory.create(
+        final_boss: IEnemy = self._enemy_factory.create(
             EnemyType.FINAL_BOSS, self._difficulty
         )
         Combat(final_boss, self._context).start()
 
     def _display_final_status(self) -> None:
         """Display final game status."""
-        self.output_handler.display(build_player_status(self.player))
+        self.output_handler.display(build_player_status(self._player))

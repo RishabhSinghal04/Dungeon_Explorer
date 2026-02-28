@@ -1,9 +1,9 @@
 from typing import Callable
 
 from core.interfaces import IOutputHandler
+from config.game_config import Difficulty, MenuKey
 from input_output.user_input import UserInputHandler
 from game_flow.game import Game
-from config.game_config import Difficulty, MenuKey
 
 from ui.show_options import show_options
 

@@ -1,4 +1,5 @@
 import sys
+import re
 from typing import Callable, Optional, TypeVar
 
 from core.interfaces import IOutputHandler
@@ -88,10 +89,11 @@ class UserInputHandler:
         Returns:
             str: A valid non-empty string entered by the user.
         """
+        pattern: re.Pattern[str] = re.compile(r"^[a-zA-Z0-9\s.,!?-]+$")
         return self._get_validated_input(
             prompt,
-            lambda v: v if v and len(v) <= num_of_chars else None,
-            f"Invalid Input! Please enter a non-empty string with at most {num_of_chars} characters.",
+            lambda v: v if v and len(v) <= num_of_chars and pattern.match(v) else None,
+            f"Invalid Input! Please use only letters, numbers, spaces, and . , ! ? - (max {num_of_chars} characters).",
             use_strip=True,
         )
 

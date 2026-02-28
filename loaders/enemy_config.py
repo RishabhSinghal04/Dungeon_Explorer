@@ -1,5 +1,7 @@
 from typing import TypedDict
+
 from characters.enemy import EnemyStats
+from config.game_config import Difficulty
 
 from core.config_loader import load_json_config
 
@@ -19,7 +21,7 @@ def load_enemy_config(
         enemy_type: {
             difficulty: EnemyStats(
                 type=enemy_type,
-                difficulty=difficulty,
+                difficulty=Difficulty(difficulty),
                 health_points=stats["health_points"],
                 attack_points=stats["attack_points"],
                 cash_drop=stats["cash_drop"],

@@ -1,15 +1,9 @@
 from typing import Optional
 from dataclasses import dataclass
 
-from merchant.merchant import Merchant
 from core.interfaces import IItem, IWeapon, IHealingItem, IPlayer, IItemFormatter
-
-
-@dataclass
-class PurchaseResult:
-    success: bool
-    message: str
-    item: Optional[IItem] = None
+from merchant.merchant import Merchant
+from merchant.transaction_results import PurchaseResult
 
 
 class BuyItem(Merchant):

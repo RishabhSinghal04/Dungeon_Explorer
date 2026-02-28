@@ -1,14 +1,16 @@
 from typing import Optional
 
-from characters.enemy import Enemy
+from core.interfaces import IEnemy
+from characters.factories.enemy_factory import EnemyFactory
+
 from config.game_config import EnemyType, Difficulty
+
 from game_flow.vault_encounter import VaultEncounter
 from game_flow.game_context import GameContext
 from game_flow.inventory_operations import InventoryOperations
 from game_flow.encounter_result import EncounterResult
 from game_flow.combat import Combat
 from game_flow.merchant_interaction import MerchantInteraction
-from characters.factories.enemy_factory import EnemyFactory
 
 from input_output.key_maps import build_main_key_map
 from ui.build_player_status import build_player_status
@@ -32,7 +34,7 @@ class LevelRunner:
     def run(self, input_chars: list[str]) -> int:
         self._display_level_intro()
         result: int = self._run_vaults_loop(input_chars)
-        self._context.output_handler.display(build_player_status(self._context.player))
+        # self._context.output_handler.display(build_player_status(self._context.player))
         if result <= 0:
             return 0
         return self._after_vaults()
@@ -98,8 +100,8 @@ class LevelRunner:
     def _after_vaults(self) -> EncounterResult:
         MerchantInteraction(self._context).interact()
 
-        boss: Enemy = self._enemy_factory.create(EnemyType.BOSS, self._difficulty)
+        boss: IEnemy = self._enemy_factory.create(EnemyType.BOSS, self._difficulty)
         result: EncounterResult = Combat(boss, self._context).start()
-        
+
         self._context.output_handler.display(build_player_status(self._context.player))
         return result

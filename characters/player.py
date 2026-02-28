@@ -1,4 +1,5 @@
 from typing import Optional
+
 from core.interfaces import (
     ICharacter,
     IPlayer,
@@ -7,6 +8,7 @@ from core.interfaces import (
     ICash,
     ICombatManager,
 )
+
 from characters.character import Character
 from characters.managers.combat_manager import CombatManager
 

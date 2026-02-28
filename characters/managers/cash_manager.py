@@ -2,14 +2,14 @@ from core.interfaces import ICash
 
 
 class CashManager(ICash):
-    def __init__(self, starting_cash: float = 0.0) -> None:
-        self.cash: float = starting_cash
+    def __init__(self, cash: float = 0.0) -> None:
+        self._cash: float = cash
 
     def add_cash(self, amount: float) -> None:
-        self.cash += amount
+        self._cash += amount
 
     def reduce_cash(self, amount: float) -> None:
-        self.cash = max(0, self.cash - amount)
+        self._cash = max(0, self._cash - amount)
 
     def get_balance(self) -> float:
-        return self.cash
+        return self._cash

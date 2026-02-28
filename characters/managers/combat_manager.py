@@ -1,4 +1,5 @@
 from typing import Optional, Callable
+
 from core.interfaces import (
     ICharacter,
     IItem,

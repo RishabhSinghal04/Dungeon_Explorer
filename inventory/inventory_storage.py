@@ -1,5 +1,7 @@
 from typing import Optional
+
 from core.interfaces import IItem, InventorySlot, IInventoryStorage
+
 from inventory.slot import Slot
 
 

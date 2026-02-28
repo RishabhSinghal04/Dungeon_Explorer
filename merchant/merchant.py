@@ -1,7 +1,8 @@
 from typing import Optional
 
 from core.interfaces import IItem, IWeapon, IHealingItem, IPlayer
-from merchant.merchant_config import load_merchant_config
+
+from loaders.merchant_config import load_merchant_config
 
 from items.all_items import all_items
 

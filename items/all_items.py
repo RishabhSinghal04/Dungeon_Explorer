@@ -1,4 +1,5 @@
-from items.item import Weapon, HealingItem
+from items.item import Item, Weapon, HealingItem
+
 
 spear = Weapon(name="Spear", attack_points=30, cost_price=2000)
 poleaxe = Weapon("Poleaxe", attack_points=50, cost_price=4400)
@@ -7,4 +8,4 @@ mace = Weapon("Mace", attack_points=35, cost_price=2800)
 
 herb = HealingItem("Herb", health_points=50, cost_price=800)
 
-all_items = [spear, poleaxe, sword, mace, herb]
+all_items: list[Item] = [spear, poleaxe, sword, mace, herb]

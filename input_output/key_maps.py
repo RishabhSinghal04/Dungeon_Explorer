@@ -1,16 +1,6 @@
 from enum import Enum
 
 
-def build_main_key_map(total_crypts: int) -> dict[str, str]:
-    key_map: dict[str, str] = {
-        str(vault_num): f"crypt_{vault_num}" for vault_num in range(1, total_crypts + 1)
-    }
-
-    key_map["i"] = "inventory"
-    key_map["0"] = "exit_game"
-    return key_map
-
-
 class CombatAction(Enum):
     ATTACK = "1"
     INVENTORY = "i"
@@ -23,6 +13,16 @@ class InventoryAction(Enum):
     VIEW_DESCRIPTION = "3"
     DISCARD_ITEM = "4"
     EXIT = "0"
+
+
+def build_main_key_map(total_vaults: int) -> dict[str, str]:
+    key_map: dict[str, str] = {
+        str(vault_num): f"crypt_{vault_num}" for vault_num in range(1, total_vaults + 1)
+    }
+
+    key_map["i"] = "inventory"
+    key_map["0"] = "exit_game"
+    return key_map
 
 
 COMBAT_KEY_MAP: dict[str, str] = {

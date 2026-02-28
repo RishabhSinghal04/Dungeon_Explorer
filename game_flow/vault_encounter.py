@@ -1,14 +1,14 @@
 from abc import ABC, abstractmethod
 
-from characters.enemy import Enemy
-from .encounter_result import EncounterResult
-from items.item import HealingItem
+from core.interfaces import IHealingItem, IEnemy
+
+from game_flow.encounter_result import EncounterResult
 from game_flow.game_context import GameContext
 from game_flow.combat import Combat
 from game_flow.inventory_operations import InventoryOperations
 
+from ui.emoji import EmojiType, format_with_emoji
 from ui.show_options import show_options
-from ui.emoji import get_emoji
 
 
 class VaultContent(ABC):
@@ -23,13 +23,13 @@ class VaultContent(ABC):
 class ItemContent(VaultContent):
     """Vault containing a healing item."""
 
-    def __init__(self, item: HealingItem) -> None:
-        self.item: HealingItem = item
+    def __init__(self, item: IHealingItem) -> None:
+        self.item: IHealingItem = item
 
     def resolve(self, context: GameContext) -> EncounterResult:
         """Handle finding a healing item."""
         context.output_handler.display(
-            f"{get_emoji("herb")}  You found a {self.item.name}."
+            format_with_emoji(f"You found a {self.item.name}.", EmojiType.HERB)
         )
         options: dict[str, str] = {"1": "take", "0": "leave"}
 
@@ -53,7 +53,9 @@ class ItemContent(VaultContent):
     def _add_item(self, context: GameContext) -> None:
         context.player.inventory.storage.add_item(self.item)
         context.output_handler.display(
-            f"{get_emoji("herb")}  {self.item.name} added to inventory."
+            format_with_emoji(
+                f"{self.item.name} added to inventory.", EmojiType.GREEN_TICK
+            )
         )
 
 
@@ -65,7 +67,9 @@ class CashContent(VaultContent):
 
     def resolve(self, context: GameContext) -> EncounterResult:
         """Handle finding cash."""
-        context.output_handler.display(f"{get_emoji("coin")}  You found {self.amount}.")
+        context.output_handler.display(
+            format_with_emoji(f"You found {self.amount}.", EmojiType.COIN)
+        )
         context.player.cash.add_cash(self.amount)
         return EncounterResult.SUCCESS
 
@@ -73,8 +77,8 @@ class CashContent(VaultContent):
 class EnemyContent(VaultContent):
     """Vault containing an enemy."""
 
-    def __init__(self, enemy: Enemy) -> None:
-        self.enemy: Enemy = enemy
+    def __init__(self, enemy: IEnemy) -> None:
+        self.enemy: IEnemy = enemy
 
     def resolve(self, context: GameContext) -> EncounterResult:
         return Combat(self.enemy, context).start()

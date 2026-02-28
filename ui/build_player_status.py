@@ -1,15 +1,29 @@
 from typing import Optional
 
-from characters import Player
-from core.interfaces import IWeapon
-from ui.emoji import EMOJIS
+from core.interfaces import IWeapon, IPlayer
+
+from ui.emoji import EmojiType, format_with_emoji
 
 
-def build_player_status(player: Player) -> str:
+def build_player_status(player: IPlayer) -> str:
     weapon: Optional[IWeapon] = player.get_equipped_weapon()
-    weapon_name: str = weapon.name if weapon else "No"
-    return (
-        f"{player.name}: {EMOJIS.get("weapon", None)}  Weapon Equipped: {weapon_name}"
-        f" | {EMOJIS.get("health", None)}  Health Points: {player.get_health_points()}"
-        f" | {EMOJIS.get("coin", None)}  Cash: {player.cash.get_balance()}"
+    weapon_part: str = (
+        weapon.name if weapon else format_with_emoji("", EmojiType.CROSS_MARK)
     )
+
+    health_points: int = player.get_health_points()
+    max_health: int = player.max_health_points
+
+    health_emoji: EmojiType = (
+        EmojiType.GREEN_HEART
+        if max_health // 2 < health_points
+        else EmojiType.ORANGE_HEART
+    )
+    status_parts: list[str] = [
+        f"{player.name}: ",
+        format_with_emoji(f"Weapon Equipped: {weapon_part} | ", EmojiType.WEAPON),
+        format_with_emoji(f"Health Points: {health_points} | ", health_emoji),
+        format_with_emoji(f"Cash: {player.cash.get_balance()}", EmojiType.COIN),
+    ]
+
+    return "".join(status_parts)

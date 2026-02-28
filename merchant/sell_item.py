@@ -3,15 +3,7 @@ from dataclasses import dataclass
 
 from core.interfaces import IItem, IPlayer, IItemFormatter
 from merchant.merchant import Merchant
-
-
-@dataclass
-class SaleResult:
-    success: bool
-    message: str
-    item: Optional[IItem] = None
-    quantity: int = 0
-    cash_earned: float = 0.0
+from merchant.transaction_results import SaleResult
 
 
 class SellItem(Merchant):

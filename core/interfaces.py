@@ -13,20 +13,6 @@ class IOutputHandler(Protocol):
 
 
 @runtime_checkable
-class ICharacter(Protocol):
-    """
-    Defines the contract for a game character.
-    Provides attributes and methods for health management,
-    survival checks, and handling damage.
-    """
-
-    @property
-    def health_points(self) -> int: ...
-    def is_alive(self) -> bool: ...
-    def take_damage(self, amount: int) -> None: ...
-
-
-@runtime_checkable
 class IItem(Protocol):
     """
     Base interface for all items in the game.
@@ -152,6 +138,35 @@ class IInventory(Protocol):
     def get_unique_items(self) -> list[IItem]: ...
 
 
+@runtime_checkable
+class ICharacter(Protocol):
+    """
+    Defines the contract for a game character.
+    Provides attributes and methods for health management,
+    survival checks, and handling damage.
+    """
+
+    @property
+    def health_points(self) -> int: ...
+    def is_alive(self) -> bool: ...
+    def take_damage(self, amount: int) -> None: ...
+
+
+class IEnemy(Protocol):
+    """Interface for enemy characters."""
+
+    @property
+    def type(self) -> str: ...
+
+    @property
+    def health_points(self) -> int: ...
+
+    def is_alive(self) -> bool: ...
+    def attack(self, target: ICharacter) -> bool: ...
+    def drop_cash(self) -> float: ...
+    def take_damage(self, amount: int) -> None: ...
+
+
 class ICash(Protocol):
     """
     Interface for managing player currency.
@@ -180,7 +195,7 @@ class ICombatManager(Protocol):
     def healing_item_used(self, slot_index: int) -> bool: ...
 
 
-class IPlayer(Protocol):
+class IPlayer(ICharacter, Protocol):
     """
     Player specific interface composed of cash + inventory.
     Defines player-specific attributes and actions such as
@@ -191,40 +206,18 @@ class IPlayer(Protocol):
     def name(self) -> str: ...
     @property
     def max_health_points(self) -> int: ...
-
     def get_equipped_weapon(self) -> Optional[IWeapon]: ...
+    def equip_weapon(self, weapon_name: str) -> bool: ...
     def unequip_weapon(self) -> None: ...
+    def attack(self, target: ICharacter) -> bool: ...
     def get_health_points(self) -> int: ...
+    def use_healing_item(self, index: int) -> bool: ...
     def update_health_points(self, amount: int) -> None: ...
 
     @property
     def inventory(self) -> IInventory: ...
     @property
     def cash(self) -> ICash: ...
-
-
-@dataclass
-class TransactionResult(Protocol):
-    """Base result for all merchant transactions."""
-
-    success: bool
-    message: str
-
-
-@dataclass
-class PurchaseResult(TransactionResult):
-    """Result of a purchase transaction."""
-
-    item: Optional[IItem] = None
-
-
-@dataclass
-class Result(TransactionResult):
-    """Result of a sale transaction."""
-
-    item: Optional[IItem] = None
-    quantity: int = 0
-    cash_earned: float = 0.0
 
 
 class IMerchantTransaction(Protocol):

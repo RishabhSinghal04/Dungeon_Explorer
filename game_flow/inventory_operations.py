@@ -1,11 +1,11 @@
-from core.interfaces import IItem, InventorySlot
-from characters.player import Player
+from core.interfaces import IItem, InventorySlot, IPlayer
 from items.item import Weapon
 from game_flow.game_context import GameContext
 
+from ui.emoji import EmojiType, format_with_emoji
 from ui.show_options import show_options
 from ui.build_player_status import build_player_status
-from ui.emoji import get_emoji
+
 from input_output.key_maps import INVENTORY_KEY_MAP
 
 
@@ -61,18 +61,18 @@ class InventoryOperations:
                 return
             if isinstance(item, Weapon):
                 self.context.output_handler.display(
-                    f"{get_emoji("weapon")}  Equipped {item.name}"
+                    format_with_emoji(f"Equipped {item.name}", EmojiType.WEAPON)
                 )
             else:
                 self.context.output_handler.display(
-                    f"{get_emoji("herb")}  Used {item.name}"
+                    format_with_emoji(f"Used {item.name}", EmojiType.HERB)
                 )
-        elif action == "2":
+        elif action == "3":
             border: str = "*" * len(item.description)
             self.context.output_handler.display(
                 border + "\n" + item.description + "\n" + border
             )
-        elif action == "3":
+        elif action == "4":
             choice: str = self._confirm_choice()
             if choice == "0":
                 return
@@ -85,7 +85,7 @@ class InventoryOperations:
         show_options(options, " " * len(options))
         return self.context.input_handler.get_action("Select an option: ", options)
 
-    def _discard_item(self, index: int, player: Player) -> bool:
+    def _discard_item(self, index: int, player: IPlayer) -> bool:
         item, _ = player.inventory.storage.remove_item(index)
         if not item:
             return False
@@ -94,7 +94,7 @@ class InventoryOperations:
             player.unequip_weapon()
         return True
 
-    def _equip_or_use_item(self, player: Player, item: IItem, index: int) -> bool:
+    def _equip_or_use_item(self, player: IPlayer, item: IItem, index: int) -> bool:
         if isinstance(item, Weapon):
             return player.equip_weapon(item.name)
         return player.use_healing_item(index)
