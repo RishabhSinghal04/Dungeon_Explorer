@@ -13,6 +13,7 @@ from game_flow.combat import Combat
 from game_flow.merchant_interaction import MerchantInteraction
 
 from input_output.key_maps import build_main_key_map
+from ui.confirmation import confirm_action
 from ui.build_player_status import build_player_status
 
 
@@ -34,7 +35,6 @@ class LevelRunner:
     def run(self, input_chars: list[str]) -> int:
         self._display_level_intro()
         result: int = self._run_vaults_loop(input_chars)
-        # self._context.output_handler.display(build_player_status(self._context.player))
         if result <= 0:
             return 0
         return self._after_vaults()
@@ -45,7 +45,7 @@ class LevelRunner:
     def _run_vaults_loop(self, input_chars: list[str]) -> int:
         total_vaults: int = len(self._vaults)
         cleared_vaults: set[int] = set()
-        MAIN_KEY_MAP: dict[str, str] = build_main_key_map(total_vaults)
+        main_key_map: dict[str, str] = build_main_key_map(total_vaults)
 
         while len(cleared_vaults) < total_vaults:
             self._context.output_handler.display(
@@ -53,11 +53,11 @@ class LevelRunner:
             )
             choice: str = self._context.input_handler.get_action(
                 f"\nVaults: {self._show_vaults_status(cleared_vaults)}    i. Inventory    0. Exit Game : ",
-                MAIN_KEY_MAP,
+                main_key_map,
             )
             self._context.output_handler.display("")
             result: Optional[int] = self._handle_choice(
-                choice, input_chars, cleared_vaults, MAIN_KEY_MAP
+                choice, input_chars, cleared_vaults, main_key_map
             )
             if result is not None:
                 return result
@@ -74,10 +74,12 @@ class LevelRunner:
         choice: str,
         input_chars: list[str],
         cleared_vaults: set[int],
-        MAIN_KEY_MAP: dict[str, str],
+        main_key_map: dict[str, str],
     ) -> Optional[int]:
         if choice == "0":
-            return 0
+            confirm_choice: bool = confirm_action(self._context.input_handler)
+            if confirm_choice:
+                return 0
         elif choice in input_chars:
             InventoryOperations(self._context).inventory_operations()
         else:
@@ -88,7 +90,7 @@ class LevelRunner:
                 )
                 return 0
             cleared_vaults.add(int(choice))
-            MAIN_KEY_MAP.pop(choice, None)
+            main_key_map.pop(choice, None)
         return None
 
     def _handle_vault_choice(self, vault_index: int) -> EncounterResult:

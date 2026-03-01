@@ -29,9 +29,9 @@ class MenuKey(Enum):
 class LevelConfig:
     """Configuration for a single level."""
 
-    regular_enemies: int = 4
-    healing_items: int = 2
-    cash_rewards: int = 2
+    regular_enemies: int = 2
+    healing_items: int = 1
+    cash_rewards: int = 1
     cash_amount: float = 1000.0
     has_mini_boss: bool = True
 

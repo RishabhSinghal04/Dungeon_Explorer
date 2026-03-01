@@ -9,6 +9,7 @@ from game_flow.encounter_result import EncounterResult
 from ui.combat_display import CombatDisplay
 from ui.build_player_status import build_player_status
 from ui.show_options import show_options
+from ui.confirmation import confirm_action
 
 from input_output.key_maps import CombatAction, COMBAT_KEY_MAP
 
@@ -32,7 +33,9 @@ class Combat:
             action: str = self._prompt_player_action()
 
             if action == CombatAction.EXIT.value:
-                return EncounterResult.EXIT_GAME
+                confirm_choice: bool = confirm_action(self._context.input_handler)
+                if confirm_choice:
+                    return EncounterResult.EXIT_GAME
             elif action == CombatAction.ATTACK.value:
                 self._do_attack()
             elif action == CombatAction.INVENTORY.value:
@@ -45,9 +48,9 @@ class Combat:
         Prompt player for combat action.
 
         Returns:
-            int: 0 - exit,
-                 1 - attack,
-                 2 - inventory.
+            str: "0" - exit,
+                 "1" - attack,
+                 "i" - inventory.
         """
         self._context.output_handler.display(build_player_status(self._context.player))
         show_options(COMBAT_KEY_MAP, " " * len(COMBAT_KEY_MAP))

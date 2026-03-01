@@ -7,7 +7,6 @@ from game_flow.game import Game
 
 from ui.show_options import show_options
 
-
 class MenuOption:
     """Represents a single menu option with a key, label, and action."""
 
@@ -48,12 +47,12 @@ class GameMenu:
         self._output_handler.display(
             "The game has 4 levels, ending with a final boss fight."
         )
-        self._output_handler.display("Each level has 9 crypts and one boss at the end.")
+        self._output_handler.display("Each level has 5 vaults and one boss at the end.")
         self._output_handler.display(
             "Before each boss, you can visit the merchant to buy or sell items."
         )
         self._output_handler.display("Game Controls:")
-        self._output_handler.display(" - Press 1-9 to enter a crypt.")
+        self._output_handler.display(" - Press 1-5 to enter a vault.")
         self._output_handler.display(" - Press 'i' to check your inventory.")
         self._output_handler.display(" - Press '0' to quit your current game.")
 

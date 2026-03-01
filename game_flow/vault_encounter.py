@@ -8,7 +8,7 @@ from game_flow.combat import Combat
 from game_flow.inventory_operations import InventoryOperations
 
 from ui.emoji import EmojiType, format_with_emoji
-from ui.show_options import show_options
+from ui.confirmation import confirm_action
 
 
 class VaultContent(ABC):
@@ -29,16 +29,12 @@ class ItemContent(VaultContent):
     def resolve(self, context: GameContext) -> EncounterResult:
         """Handle finding a healing item."""
         context.output_handler.display(
-            format_with_emoji(f"You found a {self.item.name}.", EmojiType.HERB)
+            format_with_emoji(f"You found a {self.item.name}. Take?", EmojiType.HERB),
         )
-        options: dict[str, str] = {"1": "take", "0": "leave"}
 
         while True:
-            show_options(options, " " * len(options))
-            choice: str = context.input_handler.get_action(
-                "Select an option: ", options
-            )
-            if choice == "0":
+            choice: bool = confirm_action(context.input_handler)
+            if not choice:
                 context.output_handler.display("You left the item.")
                 break
             if not context.player.inventory.storage.is_full():

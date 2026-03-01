@@ -38,7 +38,7 @@ class PlayerFactory:
         default_healing_item: IHealingItem = PlayerFactory.get_default_healing_item()
 
         inventory.add_item(default_weapon, 1)
-        inventory.add_item(default_healing_item, 2)
+        inventory.add_item(default_healing_item, 1)
 
         config: dict[str, int] = load_player_config()
         player = Player(player_name, inventory, cash_manager, config)
