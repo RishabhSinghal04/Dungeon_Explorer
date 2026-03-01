@@ -11,7 +11,7 @@ def build_player_status(player: IPlayer) -> str:
         weapon.name if weapon else format_with_emoji("", EmojiType.CROSS_MARK)
     )
 
-    health_points: int = player.get_health_points()
+    health_points: int = player.health_points
     max_health: int = player.max_health_points
 
     health_emoji: EmojiType = (

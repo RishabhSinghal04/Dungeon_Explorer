@@ -30,7 +30,7 @@ class Player(Character, IPlayer):
 
         self._combat_manager: ICombatManager = CombatManager(
             inventory=self._inventory,
-            get_health_points=self.get_health_points,
+            get_health_points=lambda: self.health_points,
             max_health_points=self.max_health_points,
             update_health_points=self.update_health_points,
         )
@@ -51,9 +51,6 @@ class Player(Character, IPlayer):
     @property
     def cash(self) -> ICash:
         return self._cash
-
-    def get_health_points(self) -> int:
-        return self.health_points
 
     def get_equipped_weapon(self) -> Optional[IWeapon]:
         """Return the currently equipped weapon, or None if no weapon is equipped."""
