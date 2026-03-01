@@ -33,9 +33,24 @@ class Inventory(IInventory):
             quantity: Number of items to add.
 
         Returns:
-            int: Leftover items that couldn't fit.
+            int: Leftover items that could not fit.
         """
         return self._storage.add_item(item, quantity)
+
+    def auto_sort(self) -> None:
+        """
+        Consolidate and organize inventory slots.
+
+        This method merges partially filled slots containing the same item into
+        earlier slots, ensuring stacks are filled from left to right. After merging,
+        it shifts all non-empty slots to the front of the inventory, removing gaps
+        between items. The result is a compact and organized inventory layout where
+        items are grouped together and empty slots are positioned at the end.
+
+        Returns:
+            None
+        """
+        self._storage.auto_sort()
 
     def count_item(self, item_name: str) -> int:
         """
@@ -163,15 +178,3 @@ class Inventory(IInventory):
             list[IItem]: List of unique items.
         """
         return self._manager.get_unique_items()
-
-    # def discard_item(self, item: Item) -> None:
-    #     slot = self.get_slot(item)
-    #     if slot:
-    #         slot.remove_item()
-
-    # OR
-    # def discard_item(self, item_name: str) -> str:
-    #     return self._manager.discard_item_by_name(item_name)
-
-    # def try_add_item(self, item: IItem, quantity: int = 1) -> int:
-    #     return self._storage.try_add_item(item, quantity)
