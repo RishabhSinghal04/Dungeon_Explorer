@@ -1,13 +1,26 @@
-from core.interfaces import IItem, IWeapon, IHealingItem
+from core.interfaces import (
+    IItem,
+    IWeapon,
+    IHealingItem,
+    IMerchantTransaction,
+    IItemFormatter,
+)
 
 from game_flow.game_context import GameContext
+from game_flow.inventory_operations import InventoryOperations
 
-from merchant.buy_item import PurchaseResult
-from merchant.sell_item import SaleResult
+from merchant.merchant import Merchant
+from merchant.transaction_results import PurchaseResult, SaleResult
 from merchant.buy_item import BuyItem
 from merchant.sell_item import SellItem
 from merchant.item_formatter import ItemFormatter
 
+from input_output.key_maps import (
+    MerchantAction,
+    TradeAction,
+    MERCHANT_KEY_MAP,
+    TRADE_KEY_MAP,
+)
 from ui.show_options import show_options
 from ui.emoji import EmojiType, format_with_emoji
 
@@ -15,28 +28,33 @@ from ui.emoji import EmojiType, format_with_emoji
 class MerchantInteraction:
     def __init__(self, context: GameContext) -> None:
         self._context: GameContext = context
+        self._merchant = Merchant()
+        self._item_formatter = ItemFormatter
 
     def interact(self) -> None:
         self._context.output_handler.display("")
-        options: dict[str, str] = {"1": "talk", "i": "inventory", "0": "exit"}
         self._context.output_handler.display("-> Merchant:-")
         while True:
-            show_options(options, " " * len(options))
+            show_options(MERCHANT_KEY_MAP, " " * len(MERCHANT_KEY_MAP))
             choice: str = self._context.input_handler.get_action(
-                "Select an option: ", options
+                "Select an option: ", MERCHANT_KEY_MAP
             )
-            return None if choice == "0" else self.talk()
+            if choice == MerchantAction.EXIT.value:
+                break
+            elif choice == MerchantAction.TALK.value:
+                self.talk()
+            else:
+                InventoryOperations(self._context)
 
     def talk(self) -> None:
-        options: dict[str, str] = {"1": "buy", "2": "sell", "0": "exit"}
         while True:
-            show_options(options, " " * len(options))
+            show_options(TRADE_KEY_MAP, " " * len(TRADE_KEY_MAP))
             choice: str = self._context.input_handler.get_action(
-                "Select an option: ", options
+                "Select an option: ", TRADE_KEY_MAP
             )
-            if choice == "0":
+            if choice == TradeAction.EXIT.value:
                 break
-            if choice == "1":
+            elif choice == TradeAction.BUY.value:
                 self._buy()
             else:
                 self._sell()
@@ -45,18 +63,10 @@ class MerchantInteraction:
         formatter = ItemFormatter()
         buy_service = BuyItem(formatter)
 
-        cash_text: str = format_with_emoji(
-            f"Cash: {buy_service.show_player_cash(self._context.player)}",
-            EmojiType.COIN,
-        )
-        self._context.output_handler.display(cash_text)
+        self._show_cash()
 
         lines: list[str] = buy_service.show_items(self._context.player)
-        formatted_lines: str = "\n".join(
-            f"{index}. {line}" if index > 0 else "   " + line
-            for index, line in enumerate(lines)
-        )
-        self._context.output_handler.display(formatted_lines)
+        self._display_items(lines)
 
         items: list[tuple[IItem, int]] = buy_service.sorted_items_stock
         buyable_items: dict[str, IItem] = {}
@@ -93,23 +103,14 @@ class MerchantInteraction:
         formatter = ItemFormatter()
         sell_service = SellItem(formatter)
 
-        cash_text: str = format_with_emoji(
-            f"Cash: {sell_service.show_player_cash(self._context.player)}",
-            EmojiType.COIN,
-        )
-        self._context.output_handler.display(cash_text)
+        self._show_cash()
 
         items: list[tuple[IItem, int]] = (
             self._context.player.inventory.storage.get_items_with_quantity()
         )
 
         lines: list[str] = sell_service.show_items(self._context.player)
-        self._context.output_handler.display(
-            "\n".join(
-                f"{index}. {line}" if index > 0 else "   " + line
-                for index, line in enumerate(lines)
-            )
-        )
+        self._display_items(lines)
 
         sellable_items: dict[str, IItem] = {}
         valid_choices: dict[str, str] = {}
@@ -151,3 +152,22 @@ class MerchantInteraction:
             if result
             else self._context.output_handler.display("Cannot Sold")
         )
+
+    def _show_cash(self) -> None:
+        cash_text: str = format_with_emoji(
+            f"Cash: {self._merchant.show_player_cash(self._context.player)}",
+            EmojiType.COIN,
+        )
+        self._context.output_handler.display(cash_text)
+
+    def _display_items(self, lines: list[str], border_char="=") -> None:
+        border: str = border_char * len(lines[1])
+        space: str = " " * 3
+
+        formatted_lines: str = "\n".join(
+            (f"{index}. {line}" if index > 0 else f"{space}{line}\n{border}")
+            for index, line in enumerate(lines)
+        )
+
+        formatted_lines += "\n" + border
+        self._context.output_handler.display(formatted_lines)
