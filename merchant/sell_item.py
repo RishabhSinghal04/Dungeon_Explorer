@@ -1,5 +1,4 @@
 from typing import Optional
-from dataclasses import dataclass
 
 from core.interfaces import IItem, IPlayer, IItemFormatter
 from merchant.merchant import Merchant
