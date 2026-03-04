@@ -31,6 +31,7 @@ class IItem(Protocol):
     def selling_price(self) -> float: ...
     @property
     def description(self) -> str: ...
+    def display_name(self) -> str: ...
 
 
 @runtime_checkable
@@ -212,17 +213,14 @@ class IPlayer(ICharacter, Protocol):
     def cash(self) -> ICash: ...
 
 
-class IMerchantTransaction(Protocol):
-    """Interface for merchant transaction operations."""
-
-    def show_items(self, player: IPlayer) -> list[str]: ...
-    def show_player_cash(self, player: IPlayer) -> str: ...
-
-
 class IItemFormatter(Protocol):
     """Interface for formatting items for display."""
 
+    def format_headings(self, items_with_qty: list[tuple[IItem, int]]) -> str: ...
     def format_for_purchase(
-        self, items: list[IItem], player: IPlayer, max_healing_items: int
+        self,
+        items_with_qty: list[tuple[IItem, int]],
+        player: IPlayer,
+        max_healing_items: int,
     ) -> list[str]: ...
     def format_for_sale(self, items_with_qty: list[tuple[IItem, int]]) -> list[str]: ...

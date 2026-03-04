@@ -14,7 +14,7 @@ from game_flow.merchant_interaction import MerchantInteraction
 
 from input_output.key_maps import build_main_key_map
 from ui.confirmation import confirm_action
-from ui.build_player_status import build_player_status
+from ui.show_player_status import build_player_status
 
 
 class LevelRunner:

@@ -16,7 +16,7 @@ class InventoryManager(IInventoryManager):
     def view_description(self, item_name: str) -> str:
         item: Optional[IItem] = self.storage.find_item(item_name)
         if item:
-            return f"{item.name}: {item.description}"
+            return f"{item.display_name()}: {item.description}"
         return f"{item_name} not found in inventory"
 
     def get_weapon(self, weapon_name: str) -> Optional[IWeapon]:

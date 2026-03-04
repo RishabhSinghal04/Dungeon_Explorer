@@ -24,12 +24,14 @@ class ItemContent(VaultContent):
     """Vault containing a healing item."""
 
     def __init__(self, item: IHealingItem) -> None:
-        self.item: IHealingItem = item
+        self._item: IHealingItem = item
 
     def resolve(self, context: GameContext) -> EncounterResult:
         """Handle finding a healing item."""
         context.output_handler.display(
-            format_with_emoji(f"You found a {self.item.name}. Take?", EmojiType.HERB),
+            format_with_emoji(
+                f"You found a {self._item.display_name()}. Take?", EmojiType.HERB
+            ),
         )
 
         while True:
@@ -47,12 +49,10 @@ class ItemContent(VaultContent):
         return EncounterResult.SUCCESS
 
     def _add_item(self, context: GameContext) -> None:
-        context.player.inventory.storage.add_item(self.item)
-        context.output_handler.display(
-            format_with_emoji(
-                f"{self.item.name} added to inventory.", EmojiType.GREEN_TICK
-            )
-        )
+        context.player.inventory.storage.add_item(self._item, 1)
+        message: str = f"{self._item.display_name()} added to inventory."
+
+        context.output_handler.display(format_with_emoji(message, EmojiType.GREEN_TICK))
 
 
 class CashContent(VaultContent):

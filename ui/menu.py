@@ -4,8 +4,11 @@ from core.interfaces import IOutputHandler
 from config.game_config import Difficulty, MenuKey
 from input_output.user_input import UserInputHandler
 from game_flow.game import Game
+from config.game_config import GameConfig
+from core.config_loader import ConfigError
 
 from ui.show_options import show_options
+
 
 class MenuOption:
     """Represents a single menu option with a key, label, and action."""
@@ -43,7 +46,7 @@ class GameMenu:
                 return
 
     def _about_game(self) -> None:
-        self._output_handler.display("Welcome to Dungeon Explorer!")
+        self._output_handler.display("-> About Game:-")
         self._output_handler.display(
             "The game has 4 levels, ending with a final boss fight."
         )
@@ -88,6 +91,14 @@ class GameMenu:
 
         self._difficulty: Difficulty = difficulty_map.get(choice, self._difficulty)
         self._start_game()
+        try:
+            self._start_game()
+        except ConfigError as e:
+            self._output_handler.display(
+                "Cannot start game due to configuration error:"
+            )
+            self._output_handler.display(f"  {e}")
+            self._output_handler.display("Returning to main menu...")
 
     def _get_user_choice(self, options: dict[str, str]) -> str:
         return self._input_handler.get_action("Enter your choice: ", options)
@@ -114,6 +125,17 @@ class GameMenu:
         self._select_difficulty()
 
     def _start_game(self) -> None:
-        """Initialize and start the game."""
-        game = Game(self._player_name, self._difficulty, self._output_handler)
+        """
+        Initialize and start the game.
+
+        Raises:
+            ConfigError: If game configuration cannot be loaded
+        """
+        game = Game(
+            self._player_name,
+            self._difficulty,
+            self._output_handler,
+            self._input_handler,
+            GameConfig(),
+        )
         game.start()

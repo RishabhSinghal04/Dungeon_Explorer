@@ -1,5 +1,3 @@
-from typing import Optional
-
 from core.interfaces import IOutputHandler, IPlayer, IEnemy
 
 from characters.enemy import EnemyStats
@@ -14,16 +12,11 @@ from game_flow.vault_assigner import VaultAssigner
 
 from input_output.user_input import UserInputHandler
 
-from config.game_config import (
-    Difficulty,
-    GameConfig,
-    EnemyType,
-    LevelConfig,
-    load_game_config,
-)
+from core.config_loader import ConfigError
+from config.game_config import Difficulty, GameConfig, EnemyType, LevelConfig
 
 from loaders.enemy_config import load_enemy_config
-from ui.build_player_status import build_player_status
+from ui.show_player_status import build_player_status
 
 
 class Game:
@@ -32,23 +25,40 @@ class Game:
         player_name: str,
         difficulty: Difficulty,
         output_handler: IOutputHandler,
-        input_handler: Optional[UserInputHandler] = None,
-        game_config: Optional[GameConfig] = None,
+        input_handler: UserInputHandler,
+        game_config: GameConfig,
     ) -> None:
-        self._player: IPlayer = PlayerFactory.create_player(player_name)
+        """
+        Initialize game.
+
+        Args:
+            player_name: Name of the player.
+            difficulty: Game difficulty level.
+            output_handler: Handler for displaying output.
+            input_handler: Handler for user input.
+            game_config: Game configuration.
+
+        Raises:
+            ConfigError: If any configuration cannot be loaded.
+        """
         self._difficulty: Difficulty = difficulty
 
-        self.input_handler: UserInputHandler = input_handler or UserInputHandler()
-        self.output_handler: IOutputHandler = output_handler
+        self._input_handler: UserInputHandler = input_handler
+        self._output_handler: IOutputHandler = output_handler
 
-        self._enemy_config: dict[str, dict[str, EnemyStats]] = load_enemy_config()
-        self._game_config: GameConfig = game_config or load_game_config()
-        self._level_config = LevelConfig()
+        try:
+            self._player: IPlayer = PlayerFactory.create_player(player_name)
 
-        self._enemy_factory = EnemyFactory(self._enemy_config)
+            self._enemy_config: dict[str, dict[str, EnemyStats]] = load_enemy_config()
+            self._game_config: GameConfig = game_config
+            self._level_config = LevelConfig()
+
+            self._enemy_factory = EnemyFactory(self._enemy_config)
+        except ConfigError as e:
+            raise ConfigError(f"Failed to initialize game: {e}") from e
 
         self._context = GameContext(
-            self._player, self.input_handler, self.output_handler
+            self._player, self._input_handler, self._output_handler
         )
 
     @property
@@ -57,7 +67,7 @@ class Game:
 
     def start(self) -> None:
         """Start and run the game."""
-        self.output_handler.display(
+        self._output_handler.display(
             f"{self.player.name} selected {self._difficulty.value.capitalize()} difficulty"
         )
 
@@ -100,4 +110,4 @@ class Game:
 
     def _display_final_status(self) -> None:
         """Display final game status."""
-        self.output_handler.display(build_player_status(self._player))
+        self._output_handler.display(build_player_status(self._player))

@@ -1,5 +1,7 @@
 from core.interfaces import IOutputHandler
+from core.interfaces import IPlayer
 
+from ui.show_player_status import show_player_status
 from ui.emoji import EmojiType, format_with_emoji
 
 
@@ -9,6 +11,9 @@ class CombatDisplay:
     def __init__(self, output_handler: IOutputHandler) -> None:
         self._output_handler: IOutputHandler = output_handler
         self._space: str = " " * 2
+
+    def player_status(self, player: IPlayer) -> None:
+        show_player_status(player, self._output_handler)
 
     def announce_battle(self, enemy_type: str) -> None:
         text: str = format_with_emoji(

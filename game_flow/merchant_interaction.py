@@ -1,10 +1,6 @@
-from core.interfaces import (
-    IItem,
-    IWeapon,
-    IHealingItem,
-    IMerchantTransaction,
-    IItemFormatter,
-)
+from typing import Optional
+
+from core.interfaces import IItem, IWeapon, IItemFormatter
 
 from game_flow.game_context import GameContext
 from game_flow.inventory_operations import InventoryOperations
@@ -26,14 +22,27 @@ from ui.emoji import EmojiType, format_with_emoji
 
 
 class MerchantInteraction:
-    def __init__(self, context: GameContext) -> None:
+    """Handles merchant trade interactions."""
+
+    def __init__(
+        self, context: GameContext, formatter: Optional[IItemFormatter] = None
+    ) -> None:
+        """
+        Initialize merchant interaction.
+
+        Args:
+            context: Game context with player and handlers.
+        """
         self._context: GameContext = context
         self._merchant = Merchant()
-        self._item_formatter = ItemFormatter
+        self._formatter: IItemFormatter = formatter or ItemFormatter()
+        self._buy_service = BuyItem(self._formatter)
+        self._sell_service = SellItem(self._formatter)
 
     def interact(self) -> None:
         self._context.output_handler.display("")
         self._context.output_handler.display("-> Merchant:-")
+
         while True:
             show_options(MERCHANT_KEY_MAP, " " * len(MERCHANT_KEY_MAP))
             choice: str = self._context.input_handler.get_action(
@@ -42,116 +51,89 @@ class MerchantInteraction:
             if choice == MerchantAction.EXIT.value:
                 break
             elif choice == MerchantAction.TALK.value:
-                self.talk()
-            else:
-                InventoryOperations(self._context)
+                self._talk()
+            elif choice == MerchantAction.INVENTORY.value:
+                InventoryOperations(self._context).inventory_operations()
 
-    def talk(self) -> None:
+    def _talk(self) -> None:
         while True:
             show_options(TRADE_KEY_MAP, " " * len(TRADE_KEY_MAP))
             choice: str = self._context.input_handler.get_action(
                 "Select an option: ", TRADE_KEY_MAP
             )
+
             if choice == TradeAction.EXIT.value:
                 break
             elif choice == TradeAction.BUY.value:
                 self._buy()
-            else:
+            elif choice == TradeAction.SELL.value:
                 self._sell()
 
     def _buy(self) -> None:
-        formatter = ItemFormatter()
-        buy_service = BuyItem(formatter)
+        while True:
+            self._context.output_handler.display("-> Buy:-")
 
-        self._show_cash()
-
-        lines: list[str] = buy_service.show_items(self._context.player)
-        self._display_items(lines)
-
-        items: list[tuple[IItem, int]] = buy_service.sorted_items_stock
-        buyable_items: dict[str, IItem] = {}
-        valid_choices: dict[str, str] = {}
-
-        for index, (item, _) in enumerate(items, start=1):
-            owned_weapon: bool = (
-                isinstance(item, IWeapon)
-                and item in self._context.player.inventory.get_unique_items()
+            items_and_qty: list[tuple[IItem, int]] = self._buy_service.get_sorted_stock(
+                self._context.player
             )
-            maxed_healing_item: bool = (
-                isinstance(item, IHealingItem)
-                and self._context.player.inventory.count_item(item.name)
-                >= buy_service._max_healing_item
+            if not items_and_qty:
+                self._context.output_handler.display("No items available to buy.")
+                return
+
+            lines: list[str] = self._buy_service.show_items(self._context.player)
+            self._show_cash()
+            self._display_items(lines, items_and_qty)
+
+            buyable_items: dict[str, IItem] = self._build_item_dict(items_and_qty, True)
+            if not buyable_items:
+                self._context.output_handler.display("All items are unavailable.")
+                return
+
+            selected_item: Optional[IItem] = self._get_item_selection(
+                buyable_items, "buy"
             )
-            if not (owned_weapon or maxed_healing_item):
-                buyable_items[str(index)] = item
-                valid_choices[str(index)] = f"item_{index}"
+            if not selected_item:
+                return
 
-        if not buyable_items:
-            self._context.output_handler.display("No items to buy.")
-            return
-
-        choice: str = self._context.input_handler.get_action(
-            f"Select an item (1-{len(items)}): ", valid_choices
-        )
-        selected_item: IItem = buyable_items[choice]
-        result: PurchaseResult = buy_service.buy_item(
-            selected_item.name, self._context.player
-        )
-        self._context.output_handler.display(result.message)
+            result: PurchaseResult = self._buy_service.buy_item(
+                selected_item.name, self._context.player
+            )
+            self._context.output_handler.display(result.message)
 
     def _sell(self) -> None:
-        formatter = ItemFormatter()
-        sell_service = SellItem(formatter)
+        while True:
+            self._context.output_handler.display("-> Sell:-")
 
-        self._show_cash()
-
-        items: list[tuple[IItem, int]] = (
-            self._context.player.inventory.storage.get_items_with_quantity()
-        )
-
-        lines: list[str] = sell_service.show_items(self._context.player)
-        self._display_items(lines)
-
-        sellable_items: dict[str, IItem] = {}
-        valid_choices: dict[str, str] = {}
-        for index, (item, qty) in enumerate(items, start=1):
-            sellable_items[str(index)] = item
-            valid_choices[str(index)] = f"item_{index}"
-
-        if not sellable_items:
-            self._context.output_handler.display("No items to sell.")
-            return
-
-        choice: str = self._context.input_handler.get_action(
-            f"Select an item (1-{len(items)}): ", valid_choices
-        )
-        selected_item: IItem = sellable_items[choice]
-
-        try:
-            max_qty: int = self._context.player.inventory.count_item(selected_item.name)
-            quantity = int(
-                self._context.input_handler.get_int(
-                    f"Enter quantity to sell " f"(max {max_qty}): ", 1, max_qty
-                )
+            items_with_qty: list[tuple[IItem, int]] = (
+                self._context.player.inventory.storage.get_items_with_quantity()
             )
-        except ValueError as e:
-            self._context.output_handler.display(str(e))
-            return
+            if not items_with_qty:
+                self._context.output_handler.display("No items to sell")
+                return
 
-        result: SaleResult = sell_service.sell_item(
-            selected_item.name, self._context.player, quantity
-        )
-        if (
-            isinstance(result.item, IWeapon)
-            and result.item == self._context.player.get_equipped_weapon()
-        ):
-            self._context.player.unequip_weapon()
+            lines: list[str] = self._sell_service.show_items(self._context.player)
+            self._show_cash()
+            self._display_items(lines, items_with_qty)
 
-        (
-            self._context.output_handler.display("Sold")
-            if result
-            else self._context.output_handler.display("Cannot Sold")
-        )
+            sellable_items: dict[str, IItem] = self._build_item_dict(
+                items_with_qty, False
+            )
+            selected_item: Optional[IItem] = self._get_item_selection(
+                sellable_items, "sell"
+            )
+            if not selected_item:
+                return
+
+            max_qty: int = self._context.player.inventory.count_item(selected_item.name)
+            quantity: Optional[int] = self._get_sell_quantity(max_qty)
+            if quantity is None:
+                return
+
+            result: SaleResult = self._sell_service.sell_item(
+                self._context.player, selected_item.name, quantity
+            )
+            self._handle_weapon_unequip(result)
+            self._context.output_handler.display(result.message)
 
     def _show_cash(self) -> None:
         cash_text: str = format_with_emoji(
@@ -160,14 +142,91 @@ class MerchantInteraction:
         )
         self._context.output_handler.display(cash_text)
 
-    def _display_items(self, lines: list[str], border_char="=") -> None:
-        border: str = border_char * len(lines[1])
-        space: str = " " * 3
+    def _display_items(
+        self, lines: list[str], items: list[tuple[IItem, int]], border_char="."
+    ) -> None:
+        headings: str = self._formatter.format_headings(items)
+        border: str = border_char * len(lines[0])
+        space: str = " " * 2 * len(str(len(items)))
 
-        formatted_lines: str = "\n".join(
-            (f"{index}. {line}" if index > 0 else f"{space}{line}\n{border}")
-            for index, line in enumerate(lines)
+        formatted_lines: str = f"{space}{headings}\n{border}\n"
+        formatted_lines += "\n".join(
+            f"{index}. {line}" for index, line in enumerate(lines, start=1)
         )
 
         formatted_lines += "\n" + border
         self._context.output_handler.display(formatted_lines)
+
+    def _build_item_dict(
+        self, items_with_qty: list[tuple[IItem, int]], only_available: bool = False
+    ) -> dict[str, IItem]:
+        """
+        Build dict mapping index to item.
+
+        Args:
+            items_with_qty: List of (item, quantity) tuples.
+            only_available: If True, only include items with qty > 0.
+
+        Returns:
+            Dict mapping string index to item.
+        """
+        result: dict[str, IItem] = {}
+        for index, (item, qty) in enumerate(items_with_qty, start=1):
+            if not only_available or qty > 0:
+                result[str(index)] = item
+
+        return result
+
+    def _get_item_selection(
+        self, items: dict[str, IItem], action: str
+    ) -> Optional[IItem]:
+        """
+        Get user's item selection.
+
+        Args:
+            items: Dict mapping index to item.
+            action: Action name for prompt ("buy" or "sell").
+
+        Returns:
+            Selected item or None if user cancels.
+        """
+        valid_choices: dict[str, str] = {"0": "back"}
+        for index in items.keys():
+            valid_choices[index] = f"item_{index}"
+
+        prompt: str = f"Select item to {action} (1-{len(items)}) or 0 to go back: "
+        choice: str = self._context.input_handler.get_action(prompt, valid_choices)
+        return None if choice == "0" else items[choice]
+
+    def _get_sell_quantity(self, max_qty: int) -> Optional[int]:
+        """
+        Get quantity to sell from user.
+
+        Args:
+            max_qty: Maximum quantity available.
+
+        Returns:
+            Quantity to sell, or None if user cancels.
+        """
+        try:
+            prompt: str = f"Enter quantity to sell " f"(1- {max_qty}) or 0 to go back: "
+            quantity: int = self._context.input_handler.get_int(prompt, 1, max_qty)
+            return None if quantity == 0 else quantity
+        except ValueError as e:
+            self._context.output_handler.display(str(e))
+            return
+
+    def _handle_weapon_unequip(self, result: SaleResult) -> None:
+        """
+        Unequip weapon if player sold their equipped weapon.
+
+        Args:
+            result: Sale transaction result.
+        """
+        if not result.success or not result.item:
+            return
+
+        if isinstance(result.item, IWeapon):
+            equipped: Optional[IWeapon] = self._context.player.get_equipped_weapon()
+            if equipped and result.item.name == equipped.name:
+                self._context.player.unequip_weapon()

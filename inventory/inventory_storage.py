@@ -10,7 +10,7 @@ class SlotIndexError(Exception):
 
 
 class InventoryStorage(IInventoryStorage):
-    def __init__(self, max_slots: int = 5) -> None:
+    def __init__(self, max_slots: int = 4) -> None:
         self.slots: list[Slot] = [Slot() for _ in range(max_slots)]
 
     def add_item(self, item: IItem, quantity: int = 1) -> int:

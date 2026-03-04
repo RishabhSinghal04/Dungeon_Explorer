@@ -7,7 +7,6 @@ from game_flow.inventory_operations import InventoryOperations
 from game_flow.encounter_result import EncounterResult
 
 from ui.combat_display import CombatDisplay
-from ui.build_player_status import build_player_status
 from ui.show_options import show_options
 from ui.confirmation import confirm_action
 
@@ -52,7 +51,7 @@ class Combat:
                  "1" - attack,
                  "i" - inventory.
         """
-        self._context.output_handler.display(build_player_status(self._context.player))
+        self._display.player_status(self._context.player)
         show_options(COMBAT_KEY_MAP, " " * len(COMBAT_KEY_MAP))
         action: str = self._context.input_handler.get_action(
             "Select an option: ", COMBAT_KEY_MAP
@@ -71,7 +70,7 @@ class Combat:
 
         weapon: Optional[IWeapon] = self._context.player.get_equipped_weapon()
         if weapon:
-            self._display.show_player_attack(weapon.name)
+            self._display.show_player_attack(weapon.display_name())
 
     def _enemy_turn(self) -> None:
         if self._enemy.attack(self._context.player):

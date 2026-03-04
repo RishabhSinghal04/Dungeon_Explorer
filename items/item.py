@@ -47,7 +47,10 @@ class Item(IItem):
 
     @property
     def description(self) -> str:
-        return f"{self._name}"
+        return f"{self.display_name()}"
+
+    def display_name(self) -> str:
+        return self._name.replace("_", " ").title()
 
     def __eq__(self, other: object) -> bool:
         """Items are equal if they have the same name (case-insensitive)."""

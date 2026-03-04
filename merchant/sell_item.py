@@ -14,9 +14,6 @@ class SellItem(Merchant):
         """
         Display player's items available for sale.
 
-        Args:
-            player (IPlayer): The player whose items to display.
-
         Returns:
             list[str]: Formatted lines showing items with quantities and prices.
         """
@@ -26,14 +23,14 @@ class SellItem(Merchant):
         return self._formatter.format_for_sale(items_with_qty)
 
     def sell_item(
-        self, item_name: str, player: IPlayer, quantity: int = 1
+        self, player: IPlayer, item_name: str, quantity: int = 1
     ) -> SaleResult:
         """
         Attempt to sell items.
 
         Args:
+            player: The player viewing items.
             item_name (str): Name of item to sell.
-            player (IPlayer): The player selling items.
             quantity (int): Number of items to sell.
 
         Returns:
@@ -53,27 +50,11 @@ class SellItem(Merchant):
         player.inventory.remove_item(item_name=item.name, quantity=quantity)
         total_cash: float = item.selling_price * quantity
         player.cash.add_cash(total_cash)
+
         return SaleResult(
             True,
-            f"Sold {quantity} {item.name} for {total_cash}",
+            f"Sold {quantity} {item.display_name()} for {total_cash}",
             item,
             quantity,
             total_cash,
         )
-
-    # def _group_items(
-    #     self, items_with_qty: list[tuple[IItem, int]]
-    # ) -> list[tuple[IItem, int]]:
-    #     grouped = {}
-    #     for item, qty in items_with_qty:
-    #         if item is not None:
-    #             name: str = item.name.lower()
-    #             if item.stackable:
-    #                 if name in grouped:
-    #                     existing_item, existing_qty = grouped[name]
-    #                     grouped[name] = (existing_item, existing_qty + qty)
-    #                 else:
-    #                     grouped[name] = (item, qty)
-    #             else:  # non-stackable items stay separate by using a unique key
-    #                 grouped[f"{name}_{id(item)}"] = (item, qty)
-    #     return list(grouped.values())

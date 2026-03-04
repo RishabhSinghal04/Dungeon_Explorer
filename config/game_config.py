@@ -4,6 +4,7 @@ from enum import Enum
 from dataclasses import dataclass, field
 
 from core.config_loader import load_json_config
+from core.interfaces import IOutputHandler
 
 
 class Difficulty(Enum):
@@ -49,12 +50,3 @@ class RawGameConfig(TypedDict, total=False):
 
     total_levels: int
     inventory_keys: list[str]
-
-
-def load_game_config(path: str = "config/game.json") -> GameConfig:
-    """Load game configuration from JSON file."""
-    raw: RawGameConfig = load_json_config(path)
-    return GameConfig(
-        total_levels=raw.get("total_levels", 4),
-        inventory_interaction_keys=raw.get("inventory_keys", ["i", "I"]),
-    )

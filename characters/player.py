@@ -12,6 +12,8 @@ from core.interfaces import (
 from characters.character import Character
 from characters.managers.combat_manager import CombatManager
 
+from loaders.player_config import PlayerConfig
+
 
 class Player(Character, IPlayer):
 
@@ -20,7 +22,7 @@ class Player(Character, IPlayer):
         name: str,
         inventory: IInventory,
         cash: ICash,
-        config: dict[str, int],
+        config: PlayerConfig,
     ) -> None:
         super().__init__(config["default_health_points"])
         self._name: str = name

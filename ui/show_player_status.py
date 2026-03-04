@@ -1,14 +1,18 @@
 from typing import Optional
 
-from core.interfaces import IWeapon, IPlayer
+from core.interfaces import IPlayer, IOutputHandler, IWeapon
 
 from ui.emoji import EmojiType, format_with_emoji
+
+
+def show_player_status(player: IPlayer, output_handler: IOutputHandler) -> None:
+    output_handler.display("\n" + build_player_status(player))
 
 
 def build_player_status(player: IPlayer) -> str:
     weapon: Optional[IWeapon] = player.get_equipped_weapon()
     weapon_part: str = (
-        weapon.name if weapon else format_with_emoji("", EmojiType.CROSS_MARK)
+        weapon.display_name() if weapon else format_with_emoji("", EmojiType.CROSS_MARK)
     )
 
     health_points: int = player.health_points

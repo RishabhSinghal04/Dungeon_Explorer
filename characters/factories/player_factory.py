@@ -7,40 +7,38 @@ from inventory.inventory import Inventory
 from inventory.inventory_manager import InventoryManager
 from inventory.inventory_storage import InventoryStorage
 
-from items.item import Weapon, HealingItem
+from items.item_factory import ItemFactory
 
-from loaders.player_config import load_player_config
-
-from items.all_items import all_items
+from loaders.player_config import PlayerConfig, load_player_config
 
 
 class PlayerFactory:
-    @staticmethod
-    def get_default_weapon() -> IWeapon:
-        weapons: list[Weapon] = [item for item in all_items if isinstance(item, Weapon)]
+    """Factory for creating player instances."""
+
+    @classmethod
+    def get_default_weapon(cls) -> IWeapon:
+        weapons: list[IWeapon] = ItemFactory().get_all_weapons()
         return min(weapons, key=lambda w: w.attack_points)
 
-    @staticmethod
-    def get_default_healing_item() -> IHealingItem:
-        healing_items: list[HealingItem] = [
-            item for item in all_items if isinstance(item, HealingItem)
-        ]
+    @classmethod
+    def get_default_healing_item(cls) -> IHealingItem:
+        healing_items: list[IHealingItem] = ItemFactory().get_all_healing_items()
         return min(healing_items, key=lambda h: h.health_points)
 
-    @staticmethod
-    def create_player(player_name: str) -> IPlayer:
+    @classmethod
+    def create_player(cls, player_name: str) -> IPlayer:
         inventory_storage = InventoryStorage()
         inventory_manager = InventoryManager(inventory_storage)
         inventory = Inventory(inventory_storage, inventory_manager)
         cash_manager = CashManager()
 
-        default_weapon: IWeapon = PlayerFactory.get_default_weapon()
-        default_healing_item: IHealingItem = PlayerFactory.get_default_healing_item()
+        default_weapon: IWeapon = cls.get_default_weapon()
+        default_healing_item: IHealingItem = cls.get_default_healing_item()
 
         inventory.add_item(default_weapon, 1)
-        inventory.add_item(default_healing_item, 1)
+        inventory.add_item(default_healing_item, 2)
 
-        config: dict[str, int] = load_player_config()
+        config: PlayerConfig = load_player_config()
         player = Player(player_name, inventory, cash_manager, config)
 
         player.equip_weapon(default_weapon.name)

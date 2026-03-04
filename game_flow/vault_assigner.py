@@ -15,7 +15,7 @@ from game_flow.game_context import GameContext
 
 from config.game_config import LevelConfig, Difficulty, EnemyType
 
-from items.item_factory import get_random_healing_item
+from items.item_factory import ItemFactory
 
 
 class VaultAssigner:
@@ -61,7 +61,8 @@ class VaultAssigner:
             ]
         )
 
-        healing_item: Optional[IHealingItem] = get_random_healing_item()
+        healing_item: IHealingItem = random.choice(ItemFactory.get_all_healing_items())
+
         if healing_item:
             contents.extend(
                 [ItemContent(healing_item) for _ in range(config.healing_items)]
