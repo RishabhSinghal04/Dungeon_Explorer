@@ -17,6 +17,7 @@ def build_player_status(player: IPlayer) -> str:
 
     health_points: int = player.health_points
     max_health: int = player.max_health_points
+    ch = "end"
 
     health_emoji: EmojiType = (
         EmojiType.GREEN_HEART
@@ -24,10 +25,10 @@ def build_player_status(player: IPlayer) -> str:
         else EmojiType.ORANGE_HEART
     )
     status_parts: list[str] = [
-        f"{player.name}: ",
-        format_with_emoji(f"Weapon Equipped: {weapon_part} | ", EmojiType.WEAPON),
-        format_with_emoji(f"Health Points: {health_points} | ", health_emoji),
-        format_with_emoji(f"Cash: {player.cash.get_balance()}", EmojiType.COIN),
+        f"{player.name} -> ",
+        format_with_emoji(f"Cash: {player.cash.get_balance()}", EmojiType.COIN, ch),
+        format_with_emoji(f" | Weapon Equipped: {weapon_part}", EmojiType.WEAPON, ch),
+        format_with_emoji(f" | Health Points: {health_points}", health_emoji, ch),
     ]
 
     return "".join(status_parts)
