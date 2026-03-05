@@ -4,6 +4,7 @@ from characters.enemy import EnemyStats
 from characters.factories.enemy_factory import EnemyFactory
 from characters.factories.player_factory import PlayerFactory
 
+from game_flow.encounter_result import EncounterResult
 from game_flow.vault_encounter import VaultEncounter
 from game_flow.game_context import GameContext
 from game_flow.combat import Combat
@@ -16,7 +17,8 @@ from core.config_loader import ConfigError
 from config.game_config import Difficulty, GameConfig, EnemyType, LevelConfig
 
 from loaders.enemy_config import load_enemy_config
-from ui.show_player_status import build_player_status
+from ui.show_player_status import show_player_status
+from ui.emoji import EmojiType, format_with_emoji
 
 
 class Game:
@@ -54,6 +56,7 @@ class Game:
             self._level_config = LevelConfig()
 
             self._enemy_factory = EnemyFactory(self._enemy_config)
+            self._validate_required_enemies()
         except ConfigError as e:
             raise ConfigError(f"Failed to initialize game: {e}") from e
 
@@ -65,6 +68,29 @@ class Game:
     def player(self) -> IPlayer:
         return self._player
 
+    def _validate_required_enemies(self) -> None:
+        """
+        Validate required enemy types exist for difficulty.
+
+        Raises:
+            ConfigError: If required enemies missing.
+        """
+        required: list[EnemyType] = [
+            EnemyType.REGULAR,
+            EnemyType.MINI_BOSS,
+            EnemyType.BOSS,
+            EnemyType.FINAL_BOSS,
+        ]
+
+        for enemy_type in required:
+            try:
+                self._enemy_factory.create(enemy_type, self._difficulty)
+            except ConfigError:
+                raise ConfigError(
+                    f"Missing required enemy: {enemy_type.value} "
+                    f"for difficulty {self._difficulty.value}"
+                )
+
     def start(self) -> None:
         """Start and run the game."""
         self._output_handler.display(
@@ -74,8 +100,9 @@ class Game:
         if not self._run_levels():
             return
 
-        self._run_final_boss()
-        self._display_final_status()
+        self._output_handler.display("")
+        result: EncounterResult = self._run_final_boss()
+        self._display_final_status(result)
 
     def _run_levels(self) -> bool:
         """Run all game levels. Returns True if player survived."""
@@ -101,13 +128,18 @@ class Game:
         )
         return assigner.assign_vaults()
 
-    def _run_final_boss(self) -> None:
+    def _run_final_boss(self) -> EncounterResult:
         """Run the final boss encounter."""
         final_boss: IEnemy = self._enemy_factory.create(
             EnemyType.FINAL_BOSS, self._difficulty
         )
-        Combat(final_boss, self._context).start()
+        result: EncounterResult = Combat(final_boss, self._context).start()
+        return result
 
-    def _display_final_status(self) -> None:
+    def _display_final_status(self, result: EncounterResult) -> None:
         """Display final game status."""
-        self._output_handler.display(build_player_status(self._player))
+        if result.value == 1:
+            self._context.output_handler.display(
+                format_with_emoji("You won the game!", EmojiType.TROPHY, "end")
+            )
+        show_player_status(self.player, self._context.output_handler)
