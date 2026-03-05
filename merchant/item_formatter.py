@@ -2,7 +2,6 @@ from typing import Optional
 from dataclasses import dataclass
 
 from core.interfaces import IItemFormatter, IItem, IWeapon, IHealingItem, IPlayer
-from merchant.merchant import Merchant
 
 
 @dataclass
