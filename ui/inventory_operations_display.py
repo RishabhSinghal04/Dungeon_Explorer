@@ -4,8 +4,6 @@ from ui.emoji import EmojiType, format_with_emoji
 from ui.show_options import show_options
 from ui.show_player_status import show_player_status
 
-from input_output.key_maps import INVENTORY_KEY_MAP
-
 
 class InventoryOperationsDisplay:
     def __init__(self, output_handler: IOutputHandler) -> None:
@@ -14,7 +12,7 @@ class InventoryOperationsDisplay:
     def empty_inventory(self) -> None:
         self._output_handler.display("Inventory is empty")
 
-    def player_status(self, player: IPlayer):
+    def player_status(self, player: IPlayer) -> None:
         show_player_status(player, self._output_handler)
 
     def show_inventory(self, items: list[InventorySlot]) -> None:
@@ -35,7 +33,8 @@ class InventoryOperationsDisplay:
 
     def show_description(self, item: IItem, border_char="*") -> None:
         border: str = border_char * len(item.description)
-        self._output_handler.display(border + "\n" + item.description + "\n" + border)
+        text_for_display: str = f"{border}\n{item.description}\n{border}"
+        self._output_handler.display(text_for_display)
 
     def show_discarded(self, item: IItem) -> None:
         self._output_handler.display(
