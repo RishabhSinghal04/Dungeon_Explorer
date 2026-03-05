@@ -3,9 +3,6 @@ from typing import TypedDict
 from enum import Enum
 from dataclasses import dataclass, field
 
-from core.config_loader import load_json_config
-from core.interfaces import IOutputHandler
-
 
 class Difficulty(Enum):
     MEDIUM = "medium"
@@ -33,7 +30,7 @@ class LevelConfig:
     regular_enemies: int = 2
     healing_items: int = 1
     cash_rewards: int = 1
-    cash_amount: float = 1000.0
+    cash_amount: float = 2000.0
     has_mini_boss: bool = True
 
 
