@@ -2,6 +2,8 @@ from core.interfaces import IEnemy
 from characters.enemy import Enemy, EnemyStats
 from config.game_config import EnemyType, Difficulty
 
+from core.config_loader import ConfigError
+
 
 class EnemyFactory:
     def __init__(self, config: dict[str, dict[str, EnemyStats]]) -> None:
@@ -25,11 +27,8 @@ class EnemyFactory:
             stats: EnemyStats = self._config[enemy_type.value][difficulty.value]
             return Enemy(stats)
         except KeyError:
-            raise ValueError(
-                f"Unknown enemy type or difficulty: {enemy_type.value}, {difficulty.value}"
-                f"Available types: {list(self._config.keys())}"
+            available: list[str] = list(self._config.keys())
+            raise ConfigError(
+                f"Enemy '{enemy_type.value}' with difficulty '{difficulty.value}' "
+                f"not found in config. Available types: {available}"
             )
-
-    def create_from_stats(self, stats: EnemyStats) -> IEnemy:
-        """Create enemy directly from stats."""
-        return Enemy(stats)
