@@ -90,7 +90,6 @@ class GameMenu:
             return
 
         self._difficulty: Difficulty = difficulty_map.get(choice, self._difficulty)
-        self._start_game()
         try:
             self._start_game()
         except ConfigError as e:
