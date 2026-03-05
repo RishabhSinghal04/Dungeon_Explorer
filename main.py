@@ -1,5 +1,4 @@
 import sys
-from typing import Optional
 
 from input_output import UserInputHandler, ConsoleOutputHandler
 from ui.menu import GameMenu
