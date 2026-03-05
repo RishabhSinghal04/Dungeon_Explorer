@@ -1,0 +1,1922 @@
+Dungeon Explorer
+
+--------------
+1. Start Game
+2. About
+0. Exit
+--------------
+Enter your choice: 1
+--------
+1. Name
+0. Back
+--------
+Enter your choice: 1
+Enter your name: Rishabh
+----------
+1. Medium
+2. Hard
+0. Back
+----------
+Enter your choice: 2
+Rishabh selected Hard difficulty
+
+Level 1:-
+
+Rishabh -> Cash: 0.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 100 💚
+
+Vaults: 1, 2, 3, 4, 5    i. Inventory    0. Exit Game : 2
+
+-> In vault 2:-
+
+Rishabh -> Cash: 0.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 100 💚
+
+⚔️ You are now facing an enemy(mini_boss).
+
+Rishabh -> Cash: 0.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 100 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Spear.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 0.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 80 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Spear.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 0.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Spear.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 0.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 40 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Spear.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 0.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 20 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Spear.  You defeated the enemy.  🪙 Reward 800.0
+
+Rishabh -> Cash: 800.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 20 🧡
+
+Vaults: 1, 3, 4, 5    i. Inventory    0. Exit Game : i
+
+
+Rishabh -> Cash: 800.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 20 🧡
+          INVENTORY
+ * * * * * * * * * * * * * * *
+1. Spear (x1)    2. Herb (x2)
+ * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 2
+🌿 Used Herb
+
+Rishabh -> Cash: 800.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 70 💚
+          INVENTORY
+ * * * * * * * * * * * * * * *
+1. Spear (x1)    2. Herb (x1)
+ * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 800.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 70 💚
+
+Vaults: 1, 3, 4, 5    i. Inventory    0. Exit Game : 2
+Invalid Input! Valid Key(s): 1, 3, 4, 5, i, 0
+
+Vaults: 1, 3, 4, 5    i. Inventory    0. Exit Game : 1
+
+-> In vault 1:-
+
+Rishabh -> Cash: 800.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 70 💚
+
+🪙 You found 2000.0.
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 70 💚
+
+Vaults: 3, 4, 5    i. Inventory    0. Exit Game : 4
+
+-> In vault 4:-
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 70 💚
+
+⚔️ You are now facing an enemy(regular).
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 70 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Spear.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Spear.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 50 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Spear.  You defeated the enemy.  🪙 Reward 400.0
+
+Rishabh -> Cash: 3200.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 50 🧡
+
+Vaults: 3, 5    i. Inventory    0. Exit Game : 3
+
+-> In vault 3:-
+
+Rishabh -> Cash: 3200.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 50 🧡
+
+⚔️ You are now facing an enemy(regular).
+
+Rishabh -> Cash: 3200.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 50 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Spear.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 3200.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 40 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Spear.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 3200.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 30 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Spear.  You defeated the enemy.  🪙 Reward 400.0
+
+Rishabh -> Cash: 3600.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 30 🧡
+
+Vaults: 5    i. Inventory    0. Exit Game : 5
+
+-> In vault 5:-
+
+Rishabh -> Cash: 3600.0 🪙 | Weapon Equipped: Spear 🪓 | Health Points: 30 🧡
+
+🌿 You found a Herb. Take?
+--------------
+1. Yes  0. No
+--------------
+Select an option: 1
+✅ Herb added to inventory.
+
+-> Merchant:-
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: 1
+---------------------------------------
+1. Buy Items   2. Sell Items   0. Exit
+---------------------------------------
+Select an option: 2
+
+-> Sell:-
+🪙 Cash: 3600.0
+   Name      Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear       Attack: 30          1000.0        1
+2. Herb        Health: 50           200.0        2
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to sell (1-2) or 0 to go back: 1
+Enter quantity to sell (0-1): 1
+***********************
+Sold 1 Spear for 1000.0
+***********************
+
+-> Sell:-
+🪙 Cash: 4600.0
+   Name     Attack/Health Points     Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Herb       Health: 50          200.0        2
+. . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to sell (1-1) or 0 to go back: 0
+---------------------------------------
+1. Buy Items   2. Sell Items   0. Exit
+---------------------------------------
+Select an option: 1
+
+-> Buy:-
+🪙 Cash: 4600.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        1
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        3
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 4
+Bought Mace for 2800.0
+
+-> Buy:-
+🪙 Cash: 1800.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        1
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        0         Own
+5. Herb             Health: 50           400.0        3
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 5
+Bought Herb for 400.0
+
+-> Buy:-
+🪙 Cash: 1400.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        1
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        0         Own
+5. Herb             Health: 50           400.0        2
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 5
+Bought Herb for 400.0
+
+-> Buy:-
+🪙 Cash: 1000.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        1
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        0         Own
+5. Herb             Health: 50           400.0        1
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 5
+Bought Herb for 400.0
+
+-> Buy:-
+🪙 Cash: 600.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        1
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        0         Own
+5. Herb             Health: 50           400.0        0         Max
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 0
+---------------------------------------
+1. Buy Items   2. Sell Items   0. Exit
+---------------------------------------
+Select an option: 0
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: i
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: ❌  🪓 | Health Points: 30 🧡
+                         INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Mace (x1)    2. Herb (x2)    3. Herb (x2)    4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 1
+🪓 Equipped Mace
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 30 🧡
+                         INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Mace (x1)    2. Herb (x2)    3. Herb (x2)    4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 2
+🌿 Used Herb
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 80 💚
+                         INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Mace (x1)    2. Herb (x1)    3. Herb (x2)    4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 2
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 80 💚
+                 INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * *
+1. Mace (x1)    2. Herb (x2)    3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 3
+Select an item: 1
+******************
+Mace -> Attack: 35
+******************
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 80 💚
+                 INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * *
+1. Mace (x1)    2. Herb (x2)    3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: 0
+--------------
+1. Yes  0. No
+--------------
+Select an option: 1
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 80 💚
+
+⚔️ You are now facing an enemy(boss).
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 80 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 50 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 20 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 20 🧡
+                 INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * *
+1. Mace (x1)    2. Herb (x2)    3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 2
+🌿 Used Herb
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 70 💚
+                 INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * *
+1. Mace (x1)    2. Herb (x1)    3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 70 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 40 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 10 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 10 🧡
+                 INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * *
+1. Mace (x1)    2. Herb (x1)    3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 2
+🌿 Used Herb
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 60 💚
+         INVENTORY
+ * * * * * * * * * * * * * *
+1. Mace (x1)    2. Herb (x2)
+ * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 30 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 30 🧡
+         INVENTORY
+ * * * * * * * * * * * * * *
+1. Mace (x1)    2. Herb (x2)
+ * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 2
+🌿 Used Herb
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 80 💚
+         INVENTORY
+ * * * * * * * * * * * * * *
+1. Mace (x1)    2. Herb (x1)
+ * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 80 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  You defeated the enemy.  🪙 Reward 1200.0
+
+Rishabh -> Cash: 1800.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 80 💚
+
+Level 2:-
+
+Rishabh -> Cash: 1800.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 80 💚
+
+Vaults: 1, 2, 3, 4, 5    i. Inventory    0. Exit Game : 1
+
+-> In vault 1:-
+
+Rishabh -> Cash: 1800.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 80 💚
+
+⚔️ You are now facing an enemy(regular).
+
+Rishabh -> Cash: 1800.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 80 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 1800.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 70 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 1800.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  You defeated the enemy.  🪙 Reward 400.0
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 60 💚
+
+Vaults: 2, 3, 4, 5    i. Inventory    0. Exit Game : 2
+
+-> In vault 2:-
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 60 💚
+
+⚔️ You are now facing an enemy(regular).
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 50 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 40 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  You defeated the enemy.  🪙 Reward 400.0
+
+Rishabh -> Cash: 2600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 40 🧡
+
+Vaults: 3, 4, 5    i. Inventory    0. Exit Game : 3
+
+-> In vault 3:-
+
+Rishabh -> Cash: 2600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 40 🧡
+
+🪙 You found 2000.0.
+
+Rishabh -> Cash: 4600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 40 🧡
+
+Vaults: 4, 5    i. Inventory    0. Exit Game : 4
+
+-> In vault 4:-
+
+Rishabh -> Cash: 4600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 40 🧡
+
+⚔️ You are now facing an enemy(mini_boss).
+
+Rishabh -> Cash: 4600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 40 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 4600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 20 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 4600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 20 🧡
+         INVENTORY
+ * * * * * * * * * * * * * *
+1. Mace (x1)    2. Herb (x1)
+ * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 2
+🌿 Used Herb
+
+Rishabh -> Cash: 4600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 70 💚
+ INVENTORY
+ * * * * * *
+1. Mace (x1)
+ * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 4600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 70 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 4600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 50 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 4600.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 30 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Mace.  You defeated the enemy.  🪙 Reward 800.0
+
+Rishabh -> Cash: 5400.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 30 🧡
+
+Vaults: 5    i. Inventory    0. Exit Game : 5
+
+-> In vault 5:-
+
+Rishabh -> Cash: 5400.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 30 🧡
+
+🌿 You found a Herb. Take?
+--------------
+1. Yes  0. No
+--------------
+Select an option: 1
+✅ Herb added to inventory.
+
+-> Merchant:-
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: i
+
+Rishabh -> Cash: 5400.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 30 🧡
+         INVENTORY
+ * * * * * * * * * * * * * *
+1. Mace (x1)    2. Herb (x1)
+ * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 2
+🌿 Used Herb
+
+Rishabh -> Cash: 5400.0 🪙 | Weapon Equipped: Mace 🪓 | Health Points: 80 💚
+ INVENTORY
+ * * * * * *
+1. Mace (x1)
+ * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: 0
+--------------
+1. Yes  0. No
+--------------
+Select an option: 0
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: 1
+---------------------------------------
+1. Buy Items   2. Sell Items   0. Exit
+---------------------------------------
+Select an option: 2
+
+-> Sell:-
+🪙 Cash: 5400.0
+   Name     Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Mace       Attack: 35          1400.0        1
+. . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to sell (1-1) or 0 to go back: 1
+Enter quantity to sell (0-1): 2
+Invalid Input! Please enter a number in range 0-1.
+Enter quantity to sell (0-1): 1
+**********************
+Sold 1 Mace for 1400.0
+**********************
+
+-> Sell:-
+No items to sell
+---------------------------------------
+1. Buy Items   2. Sell Items   0. Exit
+---------------------------------------
+Select an option: 1
+
+-> Buy:-
+🪙 Cash: 6800.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        1
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        4
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 3
+Bought Sword for 3600.0
+
+-> Buy:-
+🪙 Cash: 3200.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        1
+3. Sword            Attack: 40          3600.0        0         Own
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        4
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 5
+Bought Herb for 400.0
+
+-> Buy:-
+🪙 Cash: 2800.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        1
+3. Sword            Attack: 40          3600.0        0         Own
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        4
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 5
+Bought Herb for 400.0
+
+-> Buy:-
+🪙 Cash: 2400.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        1
+3. Sword            Attack: 40          3600.0        0         Own
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        3
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 5
+Bought Herb for 400.0
+
+-> Buy:-
+🪙 Cash: 2000.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        1
+3. Sword            Attack: 40          3600.0        0         Own
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        2
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 5
+Bought Herb for 400.0
+
+-> Buy:-
+🪙 Cash: 1600.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        1
+3. Sword            Attack: 40          3600.0        0         Own
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        1
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 5
+Bought Herb for 400.0
+
+-> Buy:-
+🪙 Cash: 1200.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        1
+3. Sword            Attack: 40          3600.0        0         Own
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        0         Max
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 0
+---------------------------------------
+1. Buy Items   2. Sell Items   0. Exit
+---------------------------------------
+Select an option: 0
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: i
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: ❌  🪓 | Health Points: 80 💚
+                           INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x2)     3. Herb (x2)     4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 1
+🪓 Equipped Sword
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 80 💚
+                           INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x2)     3. Herb (x2)     4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 3
+Select an item: 1
+*******************
+Sword -> Attack: 40
+*******************
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 80 💚
+                           INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x2)     3. Herb (x2)     4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 3
+Select an item: 4
+*******************************
+Herb -> Heals: 50 Health Points
+*******************************
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 80 💚
+                           INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x2)     3. Herb (x2)     4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: 0
+--------------
+1. Yes  0. No
+--------------
+Select an option: 1
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 80 💚
+
+⚔️ You are now facing an enemy(boss).
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 80 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 50 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 20 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 20 🧡
+                           INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x2)     3. Herb (x2)     4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 2
+🌿 Used Herb
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 70 💚
+                           INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x1)     3. Herb (x2)     4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 70 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 40 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 10 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 10 🧡
+                           INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x1)     3. Herb (x2)     4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: I
+Invalid Input! Please enter a number in range 1-4.
+Select an item: 4
+🌿 Used Herb
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 60 💚
+                   INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x1)     3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: I
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 60 💚
+                   INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x1)     3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 1200.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  You defeated the enemy.  🪙 Reward 1200.0
+
+Rishabh -> Cash: 2400.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 60 💚
+
+Level 3:-
+
+Rishabh -> Cash: 2400.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 60 💚
+
+Vaults: 1, 2, 3, 4, 5    i. Inventory    0. Exit Game : 2
+
+-> In vault 2:-
+
+Rishabh -> Cash: 2400.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 60 💚
+
+🌿 You found a Herb. Take?
+--------------
+1. Yes  0. No
+--------------
+Select an option: 1
+✅ Herb added to inventory.
+
+Rishabh -> Cash: 2400.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 60 💚
+
+Vaults: 1, 3, 4, 5    i. Inventory    0. Exit Game : 4
+
+-> In vault 4:-
+
+Rishabh -> Cash: 2400.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 60 💚
+
+⚔️ You are now facing an enemy(regular).
+
+Rishabh -> Cash: 2400.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 2400.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 50 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 2400.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 40 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  You defeated the enemy.  🪙 Reward 400.0
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 40 🧡
+
+Vaults: 1, 3, 5    i. Inventory    0. Exit Game : 5
+
+-> In vault 5:-
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 40 🧡
+
+⚔️ You are now facing an enemy(mini_boss).
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 40 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 20 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 20 🧡
+                   INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x2)     3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 2
+🌿 Used Herb
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 70 💚
+                   INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x1)     3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 70 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 50 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 30 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 30 🧡
+                   INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x1)     3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 3
+Select an item: 1
+*******************
+Sword -> Attack: 40
+*******************
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 30 🧡
+                   INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x1)     3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 3
+Select an item: 3
+*******************************
+Herb -> Heals: 50 Health Points
+*******************************
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 30 🧡
+                   INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x1)     3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 2
+🌿 Used Herb
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 80 💚
+          INVENTORY
+ * * * * * * * * * * * * * * *
+1. Sword (x1)    2. Herb (x2)
+ * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 2800.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 80 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  You defeated the enemy.  🪙 Reward 800.0
+
+Rishabh -> Cash: 3600.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 80 💚
+
+Vaults: 1, 3    i. Inventory    0. Exit Game : 3
+
+-> In vault 3:-
+
+Rishabh -> Cash: 3600.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 80 💚
+
+⚔️ You are now facing an enemy(regular).
+
+Rishabh -> Cash: 3600.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 80 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 3600.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 70 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 3600.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Sword.  You defeated the enemy.  🪙 Reward 400.0
+
+Rishabh -> Cash: 4000.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 60 💚
+
+Vaults: 1    i. Inventory    0. Exit Game : 1
+
+-> In vault 1:-
+
+Rishabh -> Cash: 4000.0 🪙 | Weapon Equipped: Sword 🪓 | Health Points: 60 💚
+
+🪙 You found 2000.0.
+
+-> Merchant:-
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: 1
+---------------------------------------
+1. Buy Items   2. Sell Items   0. Exit
+---------------------------------------
+Select an option: 2
+
+-> Sell:-
+🪙 Cash: 6000.0
+   Name      Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Sword       Attack: 40          1800.0        1
+2. Herb        Health: 50           200.0        2
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to sell (1-2) or 0 to go back: 1
+Enter quantity to sell (0-1): 1
+***********************
+Sold 1 Sword for 1800.0
+***********************
+
+-> Sell:-
+🪙 Cash: 7800.0
+   Name     Attack/Health Points     Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Herb       Health: 50          200.0        2
+. . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to sell (1-1) or 0 to go back: 0
+---------------------------------------
+1. Buy Items   2. Sell Items   0. Exit
+---------------------------------------
+Select an option: 1
+
+-> Buy:-
+🪙 Cash: 7800.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        1
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        3
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 2
+Bought Poleaxe for 4400.0
+
+-> Buy:-
+🪙 Cash: 3400.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        0         Own
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        3
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 5
+Bought Herb for 400.0
+
+-> Buy:-
+🪙 Cash: 3000.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        0         Own
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        2
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 5
+Bought Herb for 400.0
+
+-> Buy:-
+🪙 Cash: 2600.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        0         Own
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        1
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 5
+Bought Herb for 400.0
+
+-> Buy:-
+🪙 Cash: 2200.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        0         Own
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        0         Max
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 0
+---------------------------------------
+1. Buy Items   2. Sell Items   0. Exit
+---------------------------------------
+Select an option: i
+Invalid Input! Valid Key(s): 1, 2, 0
+Select an option: 0
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: i
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: ❌  🪓 | Health Points: 60 💚
+                               INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x2)       4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: 1
+---------------------------------------
+1. Buy Items   2. Sell Items   0. Exit
+---------------------------------------
+Select an option: 1
+
+-> Buy:-
+🪙 Cash: 2200.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        0         Own
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        0         Max
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 1
+Inventory is full. Cannot add item.
+
+-> Buy:-
+🪙 Cash: 2200.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        0         Own
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        0         Max
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 0
+---------------------------------------
+1. Buy Items   2. Sell Items   0. Exit
+---------------------------------------
+Select an option: 0
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: 0
+--------------
+1. Yes  0. No
+--------------
+Select an option: 1
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: ❌  🪓 | Health Points: 60 💚
+
+⚔️ You are now facing an enemy(boss).
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: ❌  🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: ❌  🪓 | Health Points: 60 💚
+                               INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x2)       4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 1
+🪓 Equipped Poleaxe
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 60 💚
+                               INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x2)       4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 30 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 30 🧡
+                               INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x2)       4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 3
+🌿 Used Herb
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 80 💚
+                               INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x1)       4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 80 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 50 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 20 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 20 🧡
+                               INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x1)       4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 3
+🌿 Used Herb
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 70 💚
+                      INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 2200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 70 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  You defeated the enemy.  🪙 Reward 1200.0
+
+Rishabh -> Cash: 3400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 70 💚
+
+Level 4:-
+
+Rishabh -> Cash: 3400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 70 💚
+
+Vaults: 1, 2, 3, 4, 5    i. Inventory    0. Exit Game : 1
+
+-> In vault 1:-
+
+Rishabh -> Cash: 3400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 70 💚
+
+⚔️ You are now facing an enemy(regular).
+
+Rishabh -> Cash: 3400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 70 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 3400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  You defeated the enemy.  🪙 Reward 400.0
+
+Rishabh -> Cash: 3800.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 60 💚
+
+Vaults: 2, 3, 4, 5    i. Inventory    0. Exit Game : 2
+
+-> In vault 2:-
+
+Rishabh -> Cash: 3800.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 60 💚
+
+⚔️ You are now facing an enemy(regular).
+
+Rishabh -> Cash: 3800.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 3800.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 50 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  You defeated the enemy.  🪙 Reward 400.0
+
+Rishabh -> Cash: 4200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 50 🧡
+
+Vaults: 3, 4, 5    i. Inventory    0. Exit Game : 3
+
+-> In vault 3:-
+
+Rishabh -> Cash: 4200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 50 🧡
+
+🪙 You found 2000.0.
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 50 🧡
+
+Vaults: 4, 5    i. Inventory    0. Exit Game : 4
+
+-> In vault 4:-
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 50 🧡
+
+⚔️ You are now facing an enemy(mini_boss).
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 50 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 30 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 10 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  You defeated the enemy.  🪙 Reward 800.0
+
+Rishabh -> Cash: 7000.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 10 🧡
+
+Vaults: 5    i. Inventory    0. Exit Game : 5
+
+-> In vault 5:-
+
+Rishabh -> Cash: 7000.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 10 🧡
+
+🌿 You found a Herb. Take?
+--------------
+1. Yes  0. No
+--------------
+Select an option: 1
+✅ Herb added to inventory.
+
+-> Merchant:-
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: i
+
+Rishabh -> Cash: 7000.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 10 🧡
+                               INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x1)       4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 2
+
+Rishabh -> Cash: 7000.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 10 🧡
+                      INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 2
+🌿 Used Herb
+
+Rishabh -> Cash: 7000.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 60 💚
+                      INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x1)       3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: 1
+---------------------------------------
+1. Buy Items   2. Sell Items   0. Exit
+---------------------------------------
+Select an option: 1
+
+-> Buy:-
+🪙 Cash: 7000.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        0         Own
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        2
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 5
+Bought Herb for 400.0
+
+-> Buy:-
+🪙 Cash: 6600.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        0         Own
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        1
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 5
+Bought Herb for 400.0
+
+-> Buy:-
+🪙 Cash: 6200.0
+   Name        Attack/Health Points      Price     Quantity
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+1. Spear            Attack: 30          2000.0        1
+2. Poleaxe          Attack: 50          4400.0        0         Own
+3. Sword            Attack: 40          3600.0        1
+4. Mace             Attack: 35          2800.0        1
+5. Herb             Health: 50           400.0        0         Max
+. . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Select item to buy (1-5) or 0 to go back: 5
+Invalid Input! Valid Key(s): 0, 1, 3, 4
+Select item to buy (1-5) or 0 to go back: 0
+---------------------------------------
+1. Buy Items   2. Sell Items   0. Exit
+---------------------------------------
+Select an option: 0
+----------------------------------
+1. Talk   i. Inventory   0. Leave
+----------------------------------
+Select an option: 0
+--------------
+1. Yes  0. No
+--------------
+Select an option: 1
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 60 💚
+
+⚔️ You are now facing an enemy(boss).
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 30 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 30 🧡
+                               INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x2)       4. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 4
+🌿 Used Herb
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 80 💚
+                      INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 80 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 50 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 20 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 20 🧡
+                      INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x2)
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 3
+🌿 Used Herb
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 70 💚
+                      INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 6200.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 70 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  You defeated the enemy.  🪙 Reward 1200.0
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 70 💚
+⚔️ You are now facing an enemy(final_boss).
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 70 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 70 💚
+                      INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 70 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 30 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 30 🧡
+                      INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 2
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 30 🧡
+                      INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x2)       3. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 2
+🌿 Used Herb
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 80 💚
+                      INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x1)       3. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 80 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 40 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 40 🧡
+                      INVENTORY
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x1)       3. Herb (x1)
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 3
+🌿 Used Herb
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 90 💚
+            INVENTORY
+ * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x1)
+ * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 90 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 50 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  ➤  🔥 Enemy attacked you.
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 10 🧡
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: i
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 10 🧡
+            INVENTORY
+ * * * * * * * * * * * * * * * * *
+1. Poleaxe (x1)    2. Herb (x1)
+ * * * * * * * * * * * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 1
+Select an item: 2
+🌿 Used Herb
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 60 💚
+   INVENTORY
+ * * * * * * *
+1. Poleaxe (x1)
+ * * * * * * *
+---------------------------------------------------------------------------------------------------
+1. Equip Or Use     2. Auto Sort     3. View Description     4. Discard Item     0. Exit Inventory
+---------------------------------------------------------------------------------------------------
+Select an option: 0
+
+Rishabh -> Cash: 7400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 60 💚
+----------------------------------------
+1. Attack   i. Inventory   0. Exit Game
+----------------------------------------
+Select an option: 1
+➤  💥 You attacked the enemy with your Poleaxe.  You defeated the enemy.  🪙 Reward 2000.0
+You won the game! 🏆
+
+Rishabh -> Cash: 9400.0 🪙 | Weapon Equipped: Poleaxe 🪓 | Health Points: 60 💚
+--------------
+1. Start Game
+2. About
+0. Exit
+--------------
