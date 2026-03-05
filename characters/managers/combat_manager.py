@@ -76,39 +76,3 @@ class CombatManager(ICombatManager):
 
         self._update_health_points(removed_item.health_points)
         return True
-        # healing_item = self.inventory.manager.get_healing_item(healing_item_name)
-
-        # if not healing_item:
-        #     return False
-        # if self.player.health_points == self.player.max_health_points:
-        #     return False
-
-        # self.player.update_health_points(healing_item.health_points)
-        # self.inventory.manager.discard_item_by_name(healing_item.name)
-        # return True
-
-    # def log_attack(self, target: ICharacter) -> None:
-    #     if not self.equipped_weapon:
-    #         self.log_action(f"{self.player.name} has no weapon equipped to attack")
-    #     else:
-    #         self.log_action(
-    #             f"{self.player.name} attacked {target.__class__.__name__} with {self.equipped_weapon.name}"
-    #         )
-
-    # def log_equip_weapon(self, weapon_name: str) -> None:
-    #     if (
-    #         self.equipped_weapon
-    #         and self.equipped_weapon.name.lower() == weapon_name.lower()
-    #     ):
-    #         self.log_action(f"{self.player.name} equipped {self.equipped_weapon.name}")
-    #     else:
-    #         self.log_action(f"No such weapon found")
-
-    # def log_healing_item_used(self, healing_item_name: str, has_used: bool) -> None:
-    #     if has_used:
-    #         self.log_action(f"{self.player.name} has used {healing_item_name}")
-    #     else:
-    #         self.log_action(f"Could not use {healing_item_name}")
-
-    # def log_action(self, message: str) -> None:
-    #     print(message)
