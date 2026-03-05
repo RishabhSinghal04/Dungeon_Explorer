@@ -14,7 +14,7 @@ from game_flow.merchant_interaction import MerchantInteraction
 
 from input_output.key_maps import build_main_key_map
 from ui.confirmation import confirm_action
-from ui.show_player_status import build_player_status
+from ui.show_player_status import show_player_status
 
 
 class LevelRunner:
@@ -37,7 +37,7 @@ class LevelRunner:
         result: int = self._run_vaults_loop(input_chars)
         if result <= 0:
             return 0
-        return self._after_vaults()
+        return self._after_vaults().value
 
     def _display_level_intro(self) -> None:
         self._context.output_handler.display(f"\nLevel {self._level_num}:-")
@@ -48,9 +48,7 @@ class LevelRunner:
         main_key_map: dict[str, str] = build_main_key_map(total_vaults)
 
         while len(cleared_vaults) < total_vaults:
-            self._context.output_handler.display(
-                "\n" + build_player_status(self._context.player)
-            )
+            show_player_status(self._context.player, self._context.output_handler)
             choice: str = self._context.input_handler.get_action(
                 f"\nVaults: {self._show_vaults_status(cleared_vaults)}    i. Inventory    0. Exit Game : ",
                 main_key_map,
@@ -84,26 +82,27 @@ class LevelRunner:
             InventoryOperations(self._context).inventory_operations()
         else:
             result: EncounterResult = self._handle_vault_choice(int(choice))
-            if result <= 0:
-                self._context.output_handler.display(
-                    build_player_status(self._context.player)
-                )
+            if result in (EncounterResult.DEFEAT, EncounterResult.EXIT_GAME):
+                show_player_status(self._context.player, self._context.output_handler)
                 return 0
+
             cleared_vaults.add(int(choice))
             main_key_map.pop(choice, None)
         return None
 
     def _handle_vault_choice(self, vault_index: int) -> EncounterResult:
         self._context.output_handler.display(f"-> In vault {vault_index}:-")
-        self._context.output_handler.display(build_player_status(self._context.player))
+        show_player_status(self._context.player, self._context.output_handler)
         self._context.output_handler.display("")
         return self._vaults[vault_index].resolve()
 
     def _after_vaults(self) -> EncounterResult:
         MerchantInteraction(self._context).interact()
+        show_player_status(self._context.player, self._context.output_handler)
+        self._context.output_handler.display("")
 
         boss: IEnemy = self._enemy_factory.create(EnemyType.BOSS, self._difficulty)
         result: EncounterResult = Combat(boss, self._context).start()
 
-        self._context.output_handler.display(build_player_status(self._context.player))
+        show_player_status(self._context.player, self._context.output_handler)
         return result
