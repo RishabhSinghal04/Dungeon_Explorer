@@ -46,4 +46,4 @@ def format_with_emoji(text: str, emoji_type: EmojiType, position: str = "start")
     emoji: str = get_emoji(emoji_type)
     if not emoji:
         return text
-    return f"{emoji}  {text}" if position == "start" else f"{text}  {emoji}"
+    return f"{emoji} {text}" if position == "start" else f"{text} {emoji}"

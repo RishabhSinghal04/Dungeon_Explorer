@@ -17,7 +17,7 @@ class CombatDisplay:
 
     def announce_battle(self, enemy_type: str) -> None:
         text: str = format_with_emoji(
-            f"You are now facing an enemy({enemy_type})", EmojiType.BATTLE
+            f"You are now facing an enemy({enemy_type}).", EmojiType.BATTLE
         )
         self._output_handler.display(text)
 
