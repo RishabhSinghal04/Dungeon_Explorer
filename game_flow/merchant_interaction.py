@@ -17,6 +17,7 @@ from input_output.key_maps import (
     MERCHANT_KEY_MAP,
     TRADE_KEY_MAP,
 )
+from ui.confirmation import confirm_action
 from ui.show_options import show_options
 from ui.emoji import EmojiType, format_with_emoji
 
@@ -49,7 +50,8 @@ class MerchantInteraction:
                 "Select an option: ", MERCHANT_KEY_MAP
             )
             if choice == MerchantAction.EXIT.value:
-                break
+                if confirm_action(self._context.input_handler):
+                    break
             elif choice == MerchantAction.TALK.value:
                 self._talk()
             elif choice == MerchantAction.INVENTORY.value:
@@ -71,6 +73,7 @@ class MerchantInteraction:
 
     def _buy(self) -> None:
         while True:
+            self._context.output_handler.display("")
             self._context.output_handler.display("-> Buy:-")
 
             items_and_qty: list[tuple[IItem, int]] = self._buy_service.get_sorted_stock(
@@ -89,8 +92,9 @@ class MerchantInteraction:
                 self._context.output_handler.display("All items are unavailable.")
                 return
 
+            total_items: int = len(items_and_qty)
             selected_item: Optional[IItem] = self._get_item_selection(
-                buyable_items, "buy"
+                buyable_items, total_items, "buy"
             )
             if not selected_item:
                 return
@@ -102,6 +106,7 @@ class MerchantInteraction:
 
     def _sell(self) -> None:
         while True:
+            self._context.output_handler.display("")
             self._context.output_handler.display("-> Sell:-")
 
             items_with_qty: list[tuple[IItem, int]] = (
@@ -118,8 +123,10 @@ class MerchantInteraction:
             sellable_items: dict[str, IItem] = self._build_item_dict(
                 items_with_qty, False
             )
+
+            total_items: int = len(items_with_qty)
             selected_item: Optional[IItem] = self._get_item_selection(
-                sellable_items, "sell"
+                sellable_items, total_items, "sell"
             )
             if not selected_item:
                 return
@@ -133,7 +140,7 @@ class MerchantInteraction:
                 self._context.player, selected_item.name, quantity
             )
             self._handle_weapon_unequip(result)
-            self._context.output_handler.display(result.message)
+            self._display_result(result)
 
     def _show_cash(self) -> None:
         cash_text: str = format_with_emoji(
@@ -146,8 +153,8 @@ class MerchantInteraction:
         self, lines: list[str], items: list[tuple[IItem, int]], border_char="."
     ) -> None:
         headings: str = self._formatter.format_headings(items)
-        border: str = border_char * len(lines[0])
-        space: str = " " * 2 * len(str(len(items)))
+        border: str = (border_char + " ") * (len(lines[0]) // 2)
+        space: str = " " * (2 + len(str(len(items))))
 
         formatted_lines: str = f"{space}{headings}\n{border}\n"
         formatted_lines += "\n".join(
@@ -178,7 +185,7 @@ class MerchantInteraction:
         return result
 
     def _get_item_selection(
-        self, items: dict[str, IItem], action: str
+        self, items: dict[str, IItem], total_items: int, action: str
     ) -> Optional[IItem]:
         """
         Get user's item selection.
@@ -194,7 +201,7 @@ class MerchantInteraction:
         for index in items.keys():
             valid_choices[index] = f"item_{index}"
 
-        prompt: str = f"Select item to {action} (1-{len(items)}) or 0 to go back: "
+        prompt: str = f"Select item to {action} (1-{total_items}) or 0 to go back: "
         choice: str = self._context.input_handler.get_action(prompt, valid_choices)
         return None if choice == "0" else items[choice]
 
@@ -209,8 +216,8 @@ class MerchantInteraction:
             Quantity to sell, or None if user cancels.
         """
         try:
-            prompt: str = f"Enter quantity to sell " f"(1- {max_qty}) or 0 to go back: "
-            quantity: int = self._context.input_handler.get_int(prompt, 1, max_qty)
+            prompt: str = f"Enter quantity to sell " f"(0-{max_qty}): "
+            quantity: int = self._context.input_handler.get_int(prompt, 0, max_qty)
             return None if quantity == 0 else quantity
         except ValueError as e:
             self._context.output_handler.display(str(e))
@@ -230,3 +237,9 @@ class MerchantInteraction:
             equipped: Optional[IWeapon] = self._context.player.get_equipped_weapon()
             if equipped and result.item.name == equipped.name:
                 self._context.player.unequip_weapon()
+
+    def _display_result(self, result: SaleResult, border_char="*") -> None:
+        text: str = result.message
+        border: str = border_char * len(text)
+        text_for_display: str = f"{border}\n{text}\n{border}"
+        self._context.output_handler.display(text_for_display)
