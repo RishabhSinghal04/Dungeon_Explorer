@@ -413,12 +413,11 @@ This project demonstrates:
 - CLI application development
 
 
-## 🙏 Acknowledgments
+## 🤖 AI-Assisted Development
 
-- Inspired by classic roguelike dungeon crawlers
-- Built as a learning project to demonstrate clean architecture in Python
-- Emoji support for enhanced terminal experience
+This project was developed with assistance from **Claude (Sonnet 4.5 Extended)** and **Microsoft Copilot** for architecture design, code refactoring, and implementation of best practices. All AI-generated code was thoroughly reviewed, tested, and iteratively refined to ensure quality and correctness.
 
----
+*This demonstrates modern development practices: leveraging AI tools as productivity multipliers while maintaining engineering rigor and code quality.*
+
 
 **Enjoy your adventure in the dungeons! May your blade stay sharp and your health potions plentiful.** ⚔️🛡️
