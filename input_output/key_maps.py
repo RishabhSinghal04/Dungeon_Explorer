@@ -80,8 +80,3 @@ def build_main_key_map(total_vaults: int) -> dict[str, str]:
     key_map["i"] = "inventory"
     key_map["0"] = "exit_game"
     return key_map
-
-
-def build_item_selection_map(items: list) -> dict[str, str]:
-    """Build key map for item selection (dynamic)."""
-    return {str(index): f"item_{index}" for index in range(1, len(items) + 1)}
